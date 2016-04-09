@@ -29,9 +29,13 @@ typedef struct		s_environ
 	void			*win;
 	void			*img;
 	char			*data;
+	char 			*name;
 	int				bpp;
 	int				sl;
 	int				ed;
+
+	int				julia;
+	int				mandelbrot;
 }					t_e;
 
 typedef struct		s_all
@@ -42,12 +46,14 @@ typedef struct		s_all
 /*
 **		fract_image.c
 */
-void				fract_init(t_a *a);
 void				fract_new_image(t_a *a);
+void				fract_init(t_a *a);
 
 /*
 **		main.c
 */
 void				ft_error(char *str);
+void				ft_print_help(t_a *a);
 int					main(int argc, char **argv);
+
 #endif

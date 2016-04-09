@@ -12,57 +12,54 @@
 
 #include "fractol.h"
 
-
-
 void			ft_error(char *str)
 {
 	ft_putendl(str);
 	exit(1);
 }
 
-static int				my_fonct_key(int keycode, t_a *a)
+void			ft_print_help(t_a *a)
 {
-	if (keycode == ESC)
-		ft_error("ESC: Good Bye My Friend .... YOLO");
-	return (0);
-}
-
-static void		ft_print_conf(t_a *a)
-{
-	char *str;
-
-	str = "Aucun Argument Donné en Paramètre n'est valide.";
-	ft_putendl(str);
-	str = "Argument Existant : ";
-	ft_putstr(str);
-	str = "\n - Julia \n - Mandelbrot\n - Autres";
-	ft_putendl(str);
+	ft_putendl("fractol: illegal option --");
+	ft_putendl("usage: fractol:\n-j (julia)\n-m (mandelbrot)\n-a (autres)");
 	exit(1);
 }
 
-static void			fct_verif(char *arg, t_a *a)
+static int		fract_key(int keycode, t_a *a)
 {
-	char *str1;
-	char *str2;
+	if (keycode == ESC)
+		ft_error("ESC: Good Bye My Friend .. YOLO");
+	return (0);
+}
 
-	str1 = "Julia";
-	str2 = "Mandelbrot";
+static void		verif_argv(char *s, t_a *a)
+{
 
-	if ((ft_strcmp(str1, arg)) && (ft_strcmp(str2, arg)))
-		ft_print_conf(a);
+	if(ft_strcmp(s, "-j") && ft_strcmp(s, "-m") && ft_strcmp(s, "-a"))
+		ft_print_help(a);
+	if (!(ft_strcmp(s, "-j")))
+		a->e.julia = 1;
+	if (!(ft_strcmp(s, "-m")))
+		a->e.mandelbrot = 1;
 }
 
 int				main(int argc, char **argv)
 {
-	t_a		a;
+	t_a			a;
 
-	if (argc > 1)
-		fct_verif(argv[1], &a);
-	else
-		ft_print_conf(&a);	
+	a.e.julia = 0;
+	a.e.mandelbrot = 0;
+	if (argc != 2)
+	{
+		if (argc == 1)
+			ft_error("No Argument\nInfo \"fractol --help\"");
+		ft_print_help(&a);
+	}
+	verif_argv(argv[1], &a);
 	fract_init(&a);
 	fract_new_image(&a);
-	mlx_hook(a.e.win, 2, (1L << 01), my_fonct_key, &a);
+	mlx_string_put(a.e.mlx, a.e.win, 20, 20, 0x00FF00, a.e.name);
+	mlx_hook(a.e.win, 2, (1L << 01), fract_key, &a);
 	mlx_loop(a.e.mlx);
 	return (0);
 }

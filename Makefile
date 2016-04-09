@@ -12,7 +12,6 @@
 
 NAME=fractol
 FLAG=-lmlx -framework OpenGL -framework Appkit
-FLAGN=-Wall -Wextra -Werror
 
 SRC =	main.c \
 		fract_image.c
@@ -23,9 +22,9 @@ $(NAME): $(SRC)
 	@make -C libft
 	@echo "\033[33;32m|\033[31m Compilation de la libft\t\t\033[33;32m | OK |"
 	@gcc -o $(NAME) $(SRC) $(FLAG) libft/libft.a
-	@echo "\033[33;32m|\033[31m Compilation du programme Fractol\t\033[33;32m | OK |"
+	@echo "\033[33;32m|\033[31m Compilation du programme fractol\t\033[33;32m | OK |"
 	@echo "\033[33;31m-----------------------------------------------"
-	@echo "\033[33;32m|\033[33;32m The \033[31mFractol \033[33;32mfile is create\t\t\033[33;32m | OK |"
+	@echo "\033[33;32m|\033[33;32m The \033[31mfractol \033[33;32mfile is create\t\t\033[33;32m | OK |"
 
 clean:
 	@echo "\033[33;32m|\033[33m Destruction des fichiers .o libf\t\033[33;32m | OK |"

@@ -23,9 +23,13 @@ void		fract_new_image(t_a *a)
 
 void		fract_init(t_a *a)
 {
+	if (a->e.julia == 1)
+		a->e.name = "Fractal Julia";
+	else if (a->e.mandelbrot == 1)
+		a->e.name = "Fractal Mandelbrot";
 	if (!(a->e.mlx = mlx_init()))
-		ft_error("initialisation mlx_init error");
-	if (!(a->e.win = mlx_new_window(a->e.mlx, MAX_X, MAX_Y, "Fractol")))
-		ft_error("initialisation mlx_new_windows error");
+		ft_error("mlx_init error");
+	if (!(a->e.win = mlx_new_window(a->e.mlx, MAX_X, MAX_Y, a->e.name)))
+		ft_error("mlx_new_windows error");
 	fract_new_image(a);
 }
