@@ -18,7 +18,8 @@ SRC =	main.c \
 		fractol_color.c \
 		fractol_key.c \
 		fractol_print.c \
-		fractol_equation.c
+		fractol_equation.c \
+		fractol_print_message.c
 		
 all: $(NAME)
 
