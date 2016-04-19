@@ -18,6 +18,8 @@ int			mandelbrot(t_a *a, int i)
 	double	fa_zi;
 	double	tmp;
 
+	if (a->i_max == 0)
+		return (0);
 	a->cr = a->x / a->zoom + a->xx / a->zoom;
 	a->ci = a->y / a->zoom + a->yy / a->zoom;
 	fa_zr = a->zr * a->zr;
@@ -39,6 +41,8 @@ int			julia(t_a *a, int i)
 	double	fa_zi;
 	double	tmp;
 
+	if (a->i_max == 0)
+		return (0);
 	a->zr = a->x / a->zoom + a->xx / a->zoom;
 	a->zi = a->y / a->zoom + a->yy / a->zoom;
 	fa_zr = a->zr * a->zr;
@@ -55,6 +59,29 @@ int			julia(t_a *a, int i)
 }
 
 int			mandelbar(t_a *a, int i)
+{
+	double	fa_zr;
+	double	fa_zi;
+	double	tmp;
+
+	if (a->i_max == 0)
+		return (0);
+	a->cr = a->x / a->zoom + a->xx / a->zoom;
+	a->ci = a->y / a->zoom + a->yy / a->zoom;
+	fa_zr = a->zr * a->zr * 2;
+	fa_zi = a->zi * a->zi * 2;
+	while ((fa_zr + fa_zi) < 4 && ++i < a->i_max)
+	{
+		tmp = a->zr;
+		a->zr = fa_zr - fa_zi - a->cr;
+		a->zi = -2 * a->zi * tmp + a->ci;
+		fa_zr = a->zr * a->zr;
+		fa_zi = a->zi * a->zi;
+	}
+	return (i);
+}
+
+int			fire(t_a *a, int i)
 {
 	double	fa_zr;
 	double	fa_zi;

@@ -29,12 +29,19 @@
 # define MINUS 78
 # define UP 126
 # define DOWN 125
+# define LEFT 123
+# define RIGHT 124
 # define ESC 53
 # define ENTER 36
+# define Q 12
+# define W 13
+# define E 14
 # define I 34
 # define J 38
 # define M 46
 # define N 45
+# define M_PLUS 4
+# define M_MINUS 5
 # define FOIS 67
 
 typedef struct		s_a
@@ -53,6 +60,7 @@ typedef struct		s_a
 	int				mod_i;
 	int				main;
 	int				main2;
+	int				k;
 
 	int				lock;
 	int				i_max;
@@ -68,6 +76,8 @@ typedef struct		s_a
 	double			tmp_zi;
 	int				x;
 	int				y;
+	int				b;
+	int				l;
 	
 }					t_a;
 
@@ -92,7 +102,8 @@ int					mandelbar(t_a *a, int i);
 /*
 **		fractol_key.c
 */
-void				fract_press(int keycode, t_a *a);
+int					fract_key(int k, t_a *a);
+int					ft_key_mouse(int k, int x, int y, t_a *a);
 
 /*
 **		fractol_print.c

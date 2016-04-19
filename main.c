@@ -36,53 +36,11 @@ static void		fractal_choose(int keycode, t_a *a)
 	fractol_init_var(a);
 }
 
-static void		ft_menu(int keycode, t_a *a, char c)
-{
-	if (c == '1')
-	{
-		a->mod_i = 1;
-		if (a->main2 == 1 && keycode == UP)
-			a->main2 = 3;
-		else if (a->main2 == 3 && keycode == DOWN)
-			a->main2 = 1;
-		else if (keycode == UP)
-			a->main2 -= 1;
-		else
-			a->main2 += 1;
-	}
-	else
-	{
-		if (a->main2 == 1)
-			a->ft = &julia;
-		if (a->main2 == 2)
-			a->ft = &mandelbrot;
-		if (a->main2 == 3)
-			a->ft = &mandelbar;
-		fractol_init_var(a);
-	}
-}
-
-static int		fract_key(int k, t_a *a)
-{
-	if (k == ESC)
-		ft_error("ESC: Good Bye My Friend .. YOLO");
-	if (k == M)
-		a->main *= -1;
-	if (k == FOIS)
-		a->mod_i *= -1;
-	if (k == I)
-		a->info_i *= -1;
-	if (a->main == -1 && (k == UP || k == DOWN))
-		ft_menu(k, a, '1');
-	if (a->main == -1 && (k == ENTER))
-		ft_menu(k, a, 'y');
-	if (a->mod_i == 1 && a->main == 1 && (k == PLUS || k == MINUS))	
-		(k == PLUS) ? (a->zoom *= 1.25) : (a->zoom /= 1.25);
-	if (a->mod_i == -1 && a->main == 1 && (k == PLUS || k == MINUS))
-		(k == PLUS) ? (a->i_max += 1) : (a->i_max -= 1);
-	fractal_print(a);
-	return (0);
-}
+// static void		ft_move(int keycode, t_a *a)
+// {
+// 	if (keycode == UP || keycode == DOWN)
+// 	(keycode == UP) ? ()
+// }
 
 static void		verif_argv(char *s, t_a *a)
 {
@@ -121,9 +79,12 @@ int				main(int argc, char **argv)
 	verif_argv(argv[1], &a);
 	fract_init(&a);
 	fractal_print(&a);
-	// mlx_mouse_hook(a->win, ft_mouse, a);
-	// mlx_hook(a->win, 6, 1L << 6, pos_mouse, a);
 	mlx_hook(a.win, 2, 1L << 1, fract_key, &a);
+	mlx_mouse_hook(a.win, ft_key_mouse, &a);
 	mlx_loop(a.mlx);
 	return (0);
 }
+
+
+
+// mlx_hook(a->win, 6, 1L << 6, pos_mouse, a);

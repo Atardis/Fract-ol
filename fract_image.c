@@ -20,15 +20,16 @@ void		fract_new_image(t_a *a)
 
 	if (!(a->img = mlx_new_image(a->mlx, MAX_X, MAX_Y)))
 		ft_error("Problem of Mlx New Image");
-	a->data = mlx_get_data_addr(a->img, &b, &c, &e);
+	a->data = mlx_get_data_addr(a->img, &a->b, &a->l, &e);
 	if (a->data == NULL)
 		ft_error("Problem of Get_Data");
+	a->b /= 8;
 }
 
 void		fractol_init_var(t_a *a)
 {
 	a->lock = 1;
-	a->i_max = 282;
+	a->i_max = 20;
 	a->zoom = 100;
 	a->ox = -(MAX_X / 2);
 	a->oy = -(MAX_Y / 2);

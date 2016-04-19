@@ -12,27 +12,44 @@
 
 #include "fractol.h"
 
+static void		ft_backfront_menu(t_a *a)
+{
+	int x;
+	int y;
+
+	y = 45;
+	while (++y < 125)
+	{
+		x = 45;
+		while (++x < 325)
+		{
+			play_color(a, ((x * 4) + (y * MAX_X) * 4), 0);
+			*(unsigned int*)(a->data + (x * (a->b)) + (y * a->l)) = 0x2C8CBC;
+		}
+	}
+}
+
 static void		ft_print_menu2(t_a *a, int i)
 {
 	char *str;
 	
 	if (i == 2)
 	{
-		str = "         Fractal Julia        ";
-		mlx_string_put(a->mlx, a->win, 50, 50, BLACK, str);
-		str = "------> Fractal Mandelbrot <--";
-		mlx_string_put(a->mlx, a->win, 50, 65, BLACK, str);
-		str = "        Fractal Mandelbar      ";
-		mlx_string_put(a->mlx, a->win, 50, 80, BLACK, str);
+		str = "        Fractal Julia";
+		mlx_string_put(a->mlx, a->win, 50, 50, WHITE, str);
+		str = "----->  Fractal Mandelbrot";
+		mlx_string_put(a->mlx, a->win, 50, 70, 0x96CA2D, str);
+		str = "        Fractal Mandelbar";
+		mlx_string_put(a->mlx, a->win, 50, 90, WHITE, str);
 	}
 	else
 	{
-		str = "         Fractal Julia         ";
-	mlx_string_put(a->mlx, a->win, 50, 50, BLACK, str);
-	str = "        Fractal Mandelbrot     ";
-	mlx_string_put(a->mlx, a->win, 50, 65, BLACK, str);
-	str = "------> Fractal Mandelbar <----";
-	mlx_string_put(a->mlx, a->win, 50, 80, BLACK, str);
+		str = "        Fractal Julia";
+		mlx_string_put(a->mlx, a->win, 50, 50, WHITE, str);
+		str = "        Fractal Mandelbrot";
+		mlx_string_put(a->mlx, a->win, 50, 70, WHITE, str);
+		str = "----->  Fractal Mandelbar";
+		mlx_string_put(a->mlx, a->win, 50, 90, 0x96CA2D, str);
 	}
 }
 
@@ -40,19 +57,37 @@ static void		ft_print_menu(t_a *a)
 {
 	char *str;
 
+	ft_backfront_menu(a);
 	if (a->main2 == 1)
 	{
-		str = "-------> Fractal Julia <-------";
-		mlx_string_put(a->mlx, a->win, 50, 50, BLACK, str);
+		str = "----->  Fractal Julia";
+		mlx_string_put(a->mlx, a->win, 50, 50, 0x96CA2D, str);
 		str = "        Fractal Mandelbrot     ";
-		mlx_string_put(a->mlx, a->win, 50, 65, BLACK, str);
+		mlx_string_put(a->mlx, a->win, 50, 70, WHITE, str);
 		str = "        Fractal Mandelbar      ";
-		mlx_string_put(a->mlx, a->win, 50, 80, BLACK, str);
+		mlx_string_put(a->mlx, a->win, 50, 90, WHITE, str);
 	}
 	if (a->main2 == 2)
 		ft_print_menu2(a, 2);
 	if (a->main2 == 3)
 		ft_print_menu2(a, 3);
+}
+
+static void			ft_print_info(t_a *a)
+{
+	if (a->main != 1 && a->mod_i != 1)
+	{	
+		a->mod_i *= -1;
+		ft_print_menu(a);
+	}
+	else if (a->main != 1)
+		ft_print_menu(a);
+	if (a->mod_i != 1)
+		mlx_string_put(a->mlx, a->win, 50, 50, 0xFF0000, "Modifier Activated");
+	if (a->info_i == -1)
+		mlx_string_put(a->mlx, a->win, 10, 10, 0xFFFFFF, ft_itoa(a->i_max));
+	if (a->i_max == 0)
+		mlx_string_put(a->mlx, a->win, 900, 520, 0xFFFFFF, "THE END .... =)");
 }
 
 void			fractal_print(t_a *a)
@@ -75,12 +110,9 @@ void			fractal_print(t_a *a)
 		}
 	}
 	a->zi = a->tmp_zi;
-	mlx_put_image_to_window(a->mlx, a->win, a->img, 0, 0);
-	if (a->mod_i != 1)
-		mlx_string_put(a->mlx, a->win, 50, 50, 0xFFFFFF, "Star Activated");
 	if (a->main != 1)
-		ft_print_menu(a);
-	if (a->info_i == -1)
-		mlx_string_put(a->mlx, a->win, 10, 10, 0xFFFFFF, ft_itoa(a->i_max));
+		ft_backfront_menu(a);
+	mlx_put_image_to_window(a->mlx, a->win, a->img, 0, 0);
+	ft_print_info(a);
 	mlx_destroy_image(a->mlx, a->img);
 }
