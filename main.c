@@ -36,12 +36,6 @@ static void		fractal_choose(int keycode, t_a *a)
 	fractol_init_var(a);
 }
 
-// static void		ft_move(int keycode, t_a *a)
-// {
-// 	if (keycode == UP || keycode == DOWN)
-// 	(keycode == UP) ? ()
-// }
-
 static void		verif_argv(char *s, t_a *a)
 {
 	if (ft_strcmp(s, "-j") && ft_strcmp(s, "-m") && ft_strcmp(s, "-M"))
@@ -71,8 +65,6 @@ int				main(int argc, char **argv)
 	a.main = 1;
 	a.main2 = 1;
 	a.info_i = 1;
-	// a.julia = 0;
-	// a.mandelbrot = 0;
 	a.info = -1;
 	if (argc != 2)
 		ft_print_help(&a);

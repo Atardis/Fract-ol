@@ -28,13 +28,9 @@ void			play_color(t_a *a, int k, int i)
 	int			color_back;
 	int			color_front;
 
-	color_back = 0x00FF;
+	color_back = 0xFF;
 	color_front = choose_color(a);
-	if (i <= 0)
-		i = -1;
-	if (a->i_max == 0)
-		a->i_max = 2;
-	else if (i == a->i_max)
+	if (i == a->i_max)
 	{
 		a->data[k] = color_back >> 0;
 		a->data[++k] = color_back >> 4;
