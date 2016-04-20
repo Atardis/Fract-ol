@@ -59,11 +59,11 @@ int		fract_key(int k, t_a *a)
 	}
 	else if (a->mod_i < 0 && k == PLUS && a->i_max < 0)
 		a->i_max = 0;
-	else if (a->mod_i == 1 && a->main == 1 && (k == PLUS || k == MINUS))	
-		(k == PLUS) ? (a->zoom *= 1.1) : (a->zoom /= 1.1);
+	else if (a->mod_i == 1 && a->main == 1 && (k == PLUS || k == MINUS))
+		(k == PLUS) ? (a->zoom *= 1.1) : (a->zoom *= 0.9);
 	else if (a->mod_i == -1 && a->main == 1 && k == PLUS)
 		a->i_max += 1;
-	else if (a->mod_i == -1 && a->main == 1 && k == MINUS)
+	else if (a->mod_i == -1 && a->main == 1 && k == MINUS && a->i_max >= 1)
 		(a->i_max == 0) ? (a->i_max = 0) : (a->i_max -= 1);
 	fractal_print(a);
 	return (0);

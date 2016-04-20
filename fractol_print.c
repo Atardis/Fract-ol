@@ -60,8 +60,6 @@ void			fractal_print(t_a *a)
 			a->zr = 0;
 			a->zi = a->tmp_zi;
 			i = a->ft(a, i);
-			if (a->x == 10 && a->y == 10)
-				ft_putnbr_end(i);
 			play_color(a, (a->x * 4 + a->y * MAX_X * 4), i);
 		}
 	}
