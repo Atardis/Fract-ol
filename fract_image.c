@@ -29,15 +29,15 @@ void		fract_new_image(t_a *a)
 void		fractol_init_var(t_a *a)
 {
 	a->lock = 1;
-	a->i_max = 20;
+	a->i_max = (a->argv3 == 2) ? (150) : (a->argv3);
 	a->zoom = 100;
 	a->ox = -(MAX_X / 2);
 	a->oy = -(MAX_Y / 2);
 	a->xx = a->ox;
 	a->yy = a->oy;
 	a->zi = 0;
-	a->cr = 0.285;
-	a->ci = 0.01;
+	a->cr = -0.835;
+	a->ci = -0.2321;
 }
 
 void		fract_init(t_a *a)

@@ -12,7 +12,7 @@
 
 #include "fractol.h"
 
-int			mandelbrot(t_a *a, int i)
+int			julia(t_a *a, int i)
 {
 	double	fa_zr;
 	double	fa_zi;
@@ -20,8 +20,8 @@ int			mandelbrot(t_a *a, int i)
 
 	if (a->i_max == 0)
 		return (0);
-	a->cr = a->x / a->zoom + a->xx / a->zoom;
-	a->ci = a->y / a->zoom + a->yy / a->zoom;
+	a->zr = a->x / a->zoom + a->xx / a->zoom;
+	a->zi = a->y / a->zoom + a->yy / a->zoom;
 	fa_zr = a->zr * a->zr;
 	fa_zi = a->zi * a->zi;
 	while ((fa_zr + fa_zi) < 4 && ++i < a->i_max)
@@ -35,7 +35,7 @@ int			mandelbrot(t_a *a, int i)
 	return (i);
 }
 
-int			julia(t_a *a, int i)
+int			mandelbrot(t_a *a, int i)
 {
 	double	fa_zr;
 	double	fa_zi;
@@ -43,8 +43,8 @@ int			julia(t_a *a, int i)
 
 	if (a->i_max == 0)
 		return (0);
-	a->zr = a->x / a->zoom + a->xx / a->zoom;
-	a->zi = a->y / a->zoom + a->yy / a->zoom;
+	a->cr = a->x / a->zoom + a->xx / a->zoom;
+	a->ci = a->y / a->zoom + a->yy / a->zoom;
 	fa_zr = a->zr * a->zr;
 	fa_zi = a->zi * a->zi;
 	while ((fa_zr + fa_zi) < 4 && ++i < a->i_max)

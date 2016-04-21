@@ -22,24 +22,12 @@ void			ft_print_help(t_a *a)
 {
 	ft_putendl("fractol: illegal option -- -");
 	ft_putendl("usage: fractol:\n-j (julia)\n-m (mandelbrot)\n-M (mandelbar)");
+	ft_putendl("-f (fire)");
 	exit(1);
-}
-
-static void		fractal_choose(int keycode, t_a *a)
-{
-	if (keycode == J)
-		a->ft = &julia;
-	if (keycode == M)
-		a->ft = &mandelbrot;
-	if (keycode == N)
-		a->ft = &mandelbar;
-	fractol_init_var(a);
 }
 
 static void		verif_argv(char *s, t_a *a)
 {
-	if (ft_strcmp(s, "-j") && ft_strcmp(s, "-m") && ft_strcmp(s, "-M"))
-		ft_print_help(a);
 	if (!(ft_strcmp(s, "-j")))
 	{
 		a->ft = &julia;
@@ -55,6 +43,13 @@ static void		verif_argv(char *s, t_a *a)
 		a->ft = &mandelbar;
 		a->main2 = 3;
 	}
+	else if (!(ft_strcmp(s, "-f")))
+	{
+		a->ft = &fire;
+		a->main2 = 4;
+	}
+	else
+		ft_print_help(a);
 }
 
 int				main(int argc, char **argv)
@@ -66,8 +61,15 @@ int				main(int argc, char **argv)
 	a.main2 = 1;
 	a.info_i = 1;
 	a.info = -1;
-	if (argc != 2)
+	if (argc == 1 || argc >= 4)
 		ft_print_help(&a);
+	a.argv3 = 2;
+	if (argc == 3)
+	{
+		a.argv3 = (!(ft_atoi(argv[2]))) ? 150 : ft_atoi(argv[2]);
+		if (a.argv3 < 0)
+			a.argv3 *= -1;
+	}
 	verif_argv(argv[1], &a);
 	fract_init(&a);
 	fractal_print(&a);

@@ -42,6 +42,8 @@
 # define N 45
 # define M_PLUS 4
 # define M_MINUS 5
+# define M_LEFT 1
+# define M_RIGHT 2
 # define FOIS 67
 
 typedef struct		s_a
@@ -61,6 +63,7 @@ typedef struct		s_a
 	int				main;
 	int				main2;
 	int				k;
+	int				argv3;
 
 	int				lock;
 	int				i_max;
@@ -96,9 +99,11 @@ void				play_color(t_a *a, int k, int i);
 /*
 **		fractol_equation.c
 */
-int					mandelbrot(t_a *a, int i);
 int					julia(t_a *a, int i);
+int					mandelbrot(t_a *a, int i);
 int					mandelbar(t_a *a, int i);
+int					fire(t_a *a, int i);
+
 /*
 **		fractol_key.c
 */

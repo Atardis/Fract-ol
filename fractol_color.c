@@ -19,8 +19,8 @@ static int		choose_color(t_a *a)
 	else if (a->k == W)
 		return (0x00CC00FF);
 	else if (a->k == E)
-		return (0x00FF00CC);
-	return (0x00FF00CC);
+		return (0x00F0F0F0);
+	return (0x004BB5C1);
 }
 
 static void		color_backgroud(t_a *a, int i, int k)
@@ -28,24 +28,9 @@ static void		color_backgroud(t_a *a, int i, int k)
 	int			color_back;
 
 	color_back = choose_color(a);
-	if (a->main2 == 1)
-	{
-		a->data[k] = color_back >> 0;
-		a->data[++k] = color_back >> 4;
-		a->data[++k] = color_back >> 10;
-	}
-	else if (a->main2 == 2)
-	{
-		a->data[k] = color_back >> 0;
-		a->data[++k] = color_back >> 4;
-		a->data[++k] = color_back >> 10;
-	}
-	else if (a->main2 == 3)
-	{
-		a->data[k] = color_back >> 0;
-		a->data[++k] = color_back >> 4;
-		a->data[++k] = color_back >> 10;
-	}
+	a->data[k] = color_back >> 0;
+	a->data[++k] = color_back >> 4;
+	a->data[++k] = color_back >> 10;
 }
 
 void			play_color(t_a *a, int k, int i)
@@ -55,11 +40,7 @@ void			play_color(t_a *a, int k, int i)
 
 	color_back = choose_color(a);
 	color_front = choose_color(a);
-	if (i == 0 && a->main2 == 1)
-		color_backgroud(a, i, k);
-	else if (i == 0 && a->main2 == 2)
-		color_backgroud(a, i, k);
-	else if (i == 0 && a->main2 == 3)
+	if (i == 0)
 		color_backgroud(a, i, k);
 	else if (i == a->i_max)
 	{
