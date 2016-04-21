@@ -61,6 +61,9 @@ int				main(int argc, char **argv)
 	a.main2 = 1;
 	a.info_i = 1;
 	a.info = -1;
+	a.space = 1;
+	a.save_x = -(MAX_X / 2);
+	a.save_y = -(MAX_Y / 2);
 	if (argc == 1 || argc >= 4)
 		ft_print_help(&a);
 	a.argv3 = 2;
@@ -74,11 +77,8 @@ int				main(int argc, char **argv)
 	fract_init(&a);
 	fractal_print(&a);
 	mlx_hook(a.win, 2, 1L << 1, fract_key, &a);
+	mlx_hook(a.win, 6, 1L << 6, mouse_position, &a);
 	mlx_mouse_hook(a.win, ft_key_mouse, &a);
 	mlx_loop(a.mlx);
 	return (0);
 }
-
-
-
-// mlx_hook(a->win, 6, 1L << 6, pos_mouse, a);

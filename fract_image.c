@@ -36,8 +36,8 @@ void		fractol_init_var(t_a *a)
 	a->xx = a->ox;
 	a->yy = a->oy;
 	a->zi = 0;
-	a->cr = -0.835;
-	a->ci = -0.2321;
+	a->cr = 0.4;
+	a->ci = 0.6;
 }
 
 void		fract_init(t_a *a)

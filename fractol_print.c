@@ -77,6 +77,7 @@ void			fractal_print(t_a *a)
 	if (a->main != 1)
 		ft_backfront_menu(a, 115);
 	ft_backfront_menu(a, 0);
+	
 	mlx_put_image_to_window(a->mlx, a->win, a->img, 0, 0);
 	ft_print_info(a);
 	mlx_destroy_image(a->mlx, a->img);

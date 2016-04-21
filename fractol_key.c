@@ -42,6 +42,12 @@ static void			ft_menu(int keycode, t_a *a, int c)
 
 int					fract_key(int k, t_a *a)
 {
+	if (k == SPACE && a->space == 1)
+		a->space += -2;
+	else if (k == SPACE && a->space == -1)
+		a->space += -1;
+	else if (k == SPACE && a->space == -2)
+		a->space = 1;
 	if (a->main == 1 && (k == LEFT || k == RIGHT))
 		a->xx -= (k == LEFT) ? 30 : -30;
 	if (a->main == 1 && (k == UP || k == DOWN))
@@ -74,30 +80,20 @@ int					fract_key(int k, t_a *a)
 
 static void			ft_resize(t_a *a, int x, int y)
 {
+	int tmp;
+
+	tmp = a->zoom;
 	x *= -1;
 	y *= -1;
-	ft_putstr("X :  ");
-	ft_putnbr_end(x);
-	ft_putstr("Y :  ");
-	ft_putnbr_end(y);
-	ft_putchar('\n');
-	ft_putstr("XX :  ");
-	ft_putnbr_end(a->xx);
-	ft_putstr("YY :  ");
-	ft_putnbr_end(a->yy);
-	ft_putchar('\n');
-
-	if (x <= -(MAX_X / 2))
-		a->xx += -(MAX_X / 2) + x;
-	else if (x > -(MAX_X / 2))
-		a->xx -= x  + (MAX_X / 2);
-	else if (y <= -(MAX_Y / 2))
-		a->yy += -(MAX_Y / 2) + y;
-	else if (y > -(MAX_Y / 2))
-		a->yy -= y + (MAX_X / 2);
-	ft_putnbr_end(a->xx);
-	ft_putnbr_end(a->yy);
-	ft_putchar('\n');
+	tmp = tmp - (tmp * 1.1);
+	if (x <= (MAX_X / 2))
+		a->xx -= (MAX_X / 2) + x + tmp;
+	else if (x > (MAX_X / 2))
+		a->xx += x  + (MAX_X / 2) - tmp;
+	else if (y <= (MAX_Y / 2))
+		a->yy += (MAX_Y / 2) + y + tmp;
+	else if (y > (MAX_Y / 2))
+		a->yy += y + (MAX_X / 2) - tmp;
 }
 
 int					ft_key_mouse(int k, int x, int y, t_a *a)
@@ -109,14 +105,39 @@ int					ft_key_mouse(int k, int x, int y, t_a *a)
 		a->i_max -= (a->i_max == 0) ? 0 : 1;
 	else if (k == M_LEFT)	
 	{
-		a->zoom += 100;
 		ft_resize(a, x, y);
+		ft_putnbr_end(a->xx);
+		ft_putnbr_end(a->yy);
+		a->zoom *= 1.1;
 	}
 	else if (k == M_RIGHT)
 	{
-		a->zoom += 100;
 		ft_resize(a, x, y);
+		a->zoom /= 1.1;
 	}
+	fractal_print(a);
+	return (0);
+}
+
+int					mouse_position(int x, int y, t_a *a)
+{
+	ft_putendl("yolo");
+	if (a->space == -1)
+	{
+		if (a->save_x >= x)
+			a->cr -= 0.10;
+		else 
+			a->cr += 0.10;
+	}
+	a->save_x = x;
+	if (a->space == -2)
+	{
+		if (a->save_y >= y)
+			a->ci -= 0.02;
+		else 
+			a->ci += 0.02;
+	}
+	a->save_y = y;
 	fractal_print(a);
 	return (0);
 }

@@ -33,6 +33,7 @@
 # define RIGHT 124
 # define ESC 53
 # define ENTER 36
+# define SPACE 49
 # define Q 12
 # define W 13
 # define E 14
@@ -64,6 +65,9 @@ typedef struct		s_a
 	int				main2;
 	int				k;
 	int				argv3;
+	int				space;
+	int				save_x;
+	int				save_y;
 
 	int				lock;
 	int				i_max;
@@ -109,6 +113,7 @@ int					fire(t_a *a, int i);
 */
 int					fract_key(int k, t_a *a);
 int					ft_key_mouse(int k, int x, int y, t_a *a);
+int					mouse_position(int x, int y, t_a *a);
 
 /*
 **		fractol_print.c
