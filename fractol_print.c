@@ -68,11 +68,20 @@ static void		ft_print_info(t_a *a)
 		ft_print_the_end(a);
 }
 
+static void		ft_print_verif_menu(t_a *a)
+{
+	if (a->main != 1)
+		ft_back_menu(a, 115);
+	if (a->main != 1 && a->main3 != 1 && a->main2 == 1)
+		ft_back_sub_menu(a);
+	ft_back_menu(a, 0);
+}
+
 void			fractal_print(t_a *a)
 {
 	int			i;
 
-	fract_new_image(a);	
+	fract_new_image(a);
 	a->y = -1;
 	a->tmp_zi = a->zi;
 	while (++a->y < MAX_Y)
@@ -88,12 +97,7 @@ void			fractal_print(t_a *a)
 		}
 	}
 	a->zi = a->tmp_zi;
-	if (a->main != 1)
-		ft_back_menu(a, 115);
-	if (a->main != 1 && a->main3 != 1 && a->main2 == 1)
-		ft_back_sub_menu(a);
-	ft_back_menu(a, 0);
-
+	ft_print_verif_menu(a);
 	mlx_put_image_to_window(a->mlx, a->win, a->img, 0, 0);
 	ft_print_info(a);
 	mlx_destroy_image(a->mlx, a->img);

@@ -109,13 +109,12 @@ int					fract_key(int k, t_a *a)
 		a->space += -1;
 	else if (k == SPACE && a->space == -2)
 		a->space = 1;
-
 	if (a->main == 1 && (k == LEFT || k == RIGHT))
 		a->xx -= (k == LEFT) ? 30 : -30;
 	if (a->main == 1 && (k == UP || k == DOWN))
 		a->yy -= (k == UP) ? 30 : -30;
 	if (k == Q || k == W)
-		(k == Q) ? (a->k = Q) : (a->k = W);
+		a->k = (k == Q) ? Q : W;
 	if (k == E)
 		a->k = E;
 	else if (k == ESC)

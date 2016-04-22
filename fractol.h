@@ -54,9 +54,7 @@ typedef struct		s_a
 	void			*win;
 	void			*img;
 	char			*data;
-
 	int				(*ft)(struct s_a*, int);
-	
 	int				julia;
 	int				mandelbrot;
 	int				info;
@@ -66,12 +64,13 @@ typedef struct		s_a
 	int				main2;
 	int				main3;
 	int				main4;
+	int				color;
+	char			*str;
 	int				k;
 	int				argv3;
 	int				space;
 	int				save_x;
 	int				save_y;
-
 	int				lock;
 	int				i_max;
 	double			zoom;
@@ -88,7 +87,6 @@ typedef struct		s_a
 	int				y;
 	int				b;
 	int				l;
-	
 }					t_a;
 
 /*
@@ -122,7 +120,6 @@ int					fract_key(int k, t_a *a);
 */
 int					ft_key_mouse(int k, int x, int y, t_a *a);
 int					mouse_position(int x, int y, t_a *a);
-
 
 /*
 **		fractol_print.c

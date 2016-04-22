@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "fractol.h"
 
 static void			ft_resize(t_a *a, int x, int y)
@@ -24,7 +23,7 @@ static void			ft_resize(t_a *a, int x, int y)
 	if (x <= (MAX_X / 2))
 		a->xx -= (MAX_X / 2) + x + tmp;
 	else if (x > (MAX_X / 2))
-		a->xx += x  + (MAX_X / 2) - tmp;
+		a->xx += x + (MAX_X / 2) - tmp;
 	else if (y <= (MAX_Y / 2))
 		a->yy += (MAX_Y / 2) + y + tmp;
 	else if (y > (MAX_Y / 2))
@@ -37,7 +36,7 @@ int					ft_key_mouse(int k, int x, int y, t_a *a)
 		a->i_max += 1;
 	else if (a->mod_i == -1 && a->main == 1 && k == M_MINUS)
 		a->i_max -= (a->i_max == 0) ? 0 : 1;
-	else if (k == M_LEFT)	
+	else if (k == M_LEFT)
 	{
 		ft_resize(a, x, y);
 		a->zoom *= 1.1;
@@ -57,14 +56,14 @@ int					mouse_position(int x, int y, t_a *a)
 	{
 		if (a->save_x >= x)
 			a->cr -= 0.10;
-		else 
+		else
 			a->cr += 0.10;
 	}
 	if (a->space == -2)
 	{
 		if (a->save_x >= x)
 			a->ci -= 0.02;
-		else 
+		else
 			a->ci += 0.02;
 	}
 	a->save_x = x;
