@@ -12,7 +12,7 @@
 
 #include "fractol.h"
 
-static void		ft_backfront_menu(t_a *a, int i)
+static void		ft_back_menu(t_a *a, int i)
 {
 	int			x;
 	int			y;
@@ -33,11 +33,25 @@ static void		ft_backfront_menu(t_a *a, int i)
 	}
 }
 
+static void		ft_back_sub_menu(t_a *a)
+{
+	int			x;
+	int			y;
+
+	y = 40;
+	while (++y < 138)
+	{
+		x = 270;
+		while (++x < 442)
+			*(unsigned int*)(a->data + (x * (a->b)) + (y * a->l)) = 0x000000;
+	}
+}
+
 static void		ft_print_info(t_a *a)
 {
 	char *str;
 
-	ft_backfront_menu(a, 0);
+	ft_back_menu(a, 0);
 	mlx_string_put(a->mlx, a->win, 1850, 5, 0xFEA128, ft_itoa(a->i_max));
 	mlx_string_put(a->mlx, a->win, 10, 5, 0xFEA128, "Modifier I_MAX");
 	if (a->main != 1)
@@ -75,9 +89,11 @@ void			fractal_print(t_a *a)
 	}
 	a->zi = a->tmp_zi;
 	if (a->main != 1)
-		ft_backfront_menu(a, 115);
-	ft_backfront_menu(a, 0);
-	
+		ft_back_menu(a, 115);
+	if (a->main != 1 && a->main3 != 1 && a->main2 == 1)
+		ft_back_sub_menu(a);
+	ft_back_menu(a, 0);
+
 	mlx_put_image_to_window(a->mlx, a->win, a->img, 0, 0);
 	ft_print_info(a);
 	mlx_destroy_image(a->mlx, a->img);

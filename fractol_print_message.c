@@ -12,7 +12,7 @@
 
 #include "fractol.h"
 
-void		ft_print_the_end(t_a *a)
+void			ft_print_the_end(t_a *a)
 {
 	char *str;
 
@@ -30,7 +30,39 @@ void		ft_print_the_end(t_a *a)
 	mlx_string_put(a->mlx, a->win, 460, 575, WHITE, str);
 }
 
-void		ft_print_menu(t_a *a)
+static void		ft_print_sub_menu(t_a *a)
+{
+	char	*str;
+	int		color;
+
+	ft_putnbr_end(a->main2);
+	if (a->main4 == 1)
+		str = "     ----->  Style 1";
+	else
+		str = "             Style 1";
+	color = (a->main4 == 1) ? 0xFEA128 : WHITE;
+	mlx_string_put(a->mlx, a->win, 227, 50, color, str);
+	if (a->main4 == 2)
+		str = "----->  Style 2";
+	else
+		str = "        Style 2";
+	color = (a->main4 == 2) ? 0xFEA128 : WHITE;
+	mlx_string_put(a->mlx, a->win, 276, 70, color, str);
+	if (a->main4 == 3)
+		str = "----->  Style 3";
+	else
+		str = "        Style 3";
+	color = (a->main4 == 3) ? 0xFEA128 : WHITE;
+	mlx_string_put(a->mlx, a->win, 276, 90, color, str);
+	if (a->main4 == 4)
+		str = "----->  Style 4";
+	else
+		str = "        Style 4";
+	color = (a->main4 == 4) ? 0xFEA128 : WHITE;
+	mlx_string_put(a->mlx, a->win, 276, 110, color, str);
+}
+
+void			ft_print_menu(t_a *a)
 {
 	char	*str;
 	int		color;
@@ -60,5 +92,6 @@ void		ft_print_menu(t_a *a)
 		str = "        Fractal Fire";
 	color = (a->main2 == 4) ? 0xFEA128 : WHITE;
 	mlx_string_put(a->mlx, a->win, 5, 110, color, str);
-	
+	if (a->main3 == -1 && a->main2 == 1)
+		ft_print_sub_menu(a);
 }

@@ -63,6 +63,8 @@ typedef struct		s_a
 	int				mod_i;
 	int				main;
 	int				main2;
+	int				main3;
+	int				main4;
 	int				k;
 	int				argv3;
 	int				space;
@@ -109,11 +111,16 @@ int					mandelbar(t_a *a, int i);
 int					fire(t_a *a, int i);
 
 /*
-**		fractol_key.c
+**		fractol_key_keyboard.c
 */
 int					fract_key(int k, t_a *a);
+
+/*
+**		fractol_key_mouse.c
+*/
 int					ft_key_mouse(int k, int x, int y, t_a *a);
 int					mouse_position(int x, int y, t_a *a);
+
 
 /*
 **		fractol_print.c

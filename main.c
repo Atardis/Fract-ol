@@ -59,6 +59,8 @@ int				main(int argc, char **argv)
 	a.mod_i = 1;
 	a.main = 1;
 	a.main2 = 1;
+	a.main3 = 1;
+	a.main4 = 1;
 	a.info_i = 1;
 	a.info = -1;
 	a.space = 1;

@@ -16,7 +16,8 @@ FLAG=-lmlx -framework OpenGL -framework Appkit
 SRC =	main.c \
 		fract_image.c \
 		fractol_color.c \
-		fractol_key.c \
+		fractol_key_keyboard.c \
+		fractol_key_mouse.c \
 		fractol_print.c \
 		fractol_equation.c \
 		fractol_print_message.c
