@@ -52,8 +52,6 @@ static void			ft_menu(int keycode, t_a *a, int c)
 	else if (c == 4)
 	{
 		fractol_init_var(a);
-		a->main *= -1;
-		a->main3 *= -1;
 		if (a->main4 == 1)
 		{
 			a->cr = -0.7269;
@@ -74,19 +72,44 @@ static void			ft_menu(int keycode, t_a *a, int c)
 			a->cr = -0.8;
 			a->ci = 0.156;
 		}
+		fractal_print(a);
+	}
+	else if (c == 5)
+	{
+		a->main *= -1;
+		a->main3 *= -1;
+		ft_menu(keycode, a, 4);
 	}
 }
 
 int					fract_key(int k, t_a *a)
 {
-	if ((k == RIGHT || k == LEFT)&& a->main == -1 && a->main2 == 1)
-		a->main3 = (k == RIGHT) ? -1 : 1;		
+	if ((k == RIGHT || k == LEFT) && a->main == -1 && a->main2 == 1)
+	{
+		if (k == LEFT)
+		{
+			a->main *= -1;
+			a->main3 = 1;
+			ft_menu(k, a, 2);
+		}
+		if (k == RIGHT)
+		{
+			a->main3 = (k == RIGHT) ? -1 : 1;
+			ft_menu(k, a, 4);
+		}
+	}
+	if (k == O)
+	{
+		fractol_init_var(a);
+		fractal_print(a);
+	}
 	if (k == SPACE && a->space == 1)
 		a->space += -2;
-	if (k == SPACE && a->space == -1)
+	else if (k == SPACE && a->space == -1)
 		a->space += -1;
 	else if (k == SPACE && a->space == -2)
 		a->space = 1;
+
 	if (a->main == 1 && (k == LEFT || k == RIGHT))
 		a->xx -= (k == LEFT) ? 30 : -30;
 	if (a->main == 1 && (k == UP || k == DOWN))
@@ -106,9 +129,13 @@ int					fract_key(int k, t_a *a)
 	else if (a->main == -1 && (k == ENTER) && a->main3 == 1)
 		ft_menu(k, a, 2);
 	else if ((k == DOWN || k == UP) && a->main3 == -1)
+	{
 		ft_menu(k, a, 3);
-	else if (a->main == -1 && a->main3 == -1 && (k == ENTER))
 		ft_menu(k, a, 4);
+		fractal_print(a);
+	}
+	else if (a->main == -1 && a->main3 == -1 && (k == ENTER))
+		ft_menu(k, a, 5);
 	else if (a->mod_i < 0 && k == PLUS && a->i_max < 0)
 		a->i_max = 0;
 	else if (a->mod_i == 1 && a->main == 1 && (k == PLUS || k == MINUS))

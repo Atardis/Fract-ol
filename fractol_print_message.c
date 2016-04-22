@@ -35,7 +35,6 @@ static void		ft_print_sub_menu(t_a *a)
 	char	*str;
 	int		color;
 
-	ft_putnbr_end(a->main2);
 	if (a->main4 == 1)
 		str = "     ----->  Style 1";
 	else
@@ -67,7 +66,6 @@ void			ft_print_menu(t_a *a)
 	char	*str;
 	int		color;
 
-	ft_putnbr_end(a->main2);
 	if (a->main2 == 1)
 		str = "----->  Fractal Julia";
 	else

@@ -40,8 +40,23 @@ void		fractol_init_var(t_a *a)
 	a->ci = 0.01;
 }
 
+void		ft_init_info(t_a *a)
+{
+	a->mod_i = 1;
+	a->main = 1;
+	a->main2 = 1;
+	a->main3 = 1;
+	a->main4 = 1;
+	a->info_i = 1;
+	a->info = -1;
+	a->space = 1;
+	a->save_x = -(MAX_X / 2);
+	a->save_y = -(MAX_Y / 2);
+}
+
 void		fract_init(t_a *a)
 {
+	ft_init_info(a);
 	fractol_init_var(a);
 	if (!(a->mlx = mlx_init()))
 		ft_error("mlx_init error");

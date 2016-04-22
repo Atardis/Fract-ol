@@ -41,6 +41,7 @@
 # define J 38
 # define M 46
 # define N 45
+# define O 31
 # define M_PLUS 4
 # define M_MINUS 5
 # define M_LEFT 1
@@ -96,6 +97,7 @@ typedef struct		s_a
 void				fract_new_image(t_a *a);
 void				fract_init(t_a *a);
 void				fractol_init_var(t_a *a);
+void				ft_init_info(t_a *a);
 
 /*
 **		fractol_color.c

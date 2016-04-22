@@ -31,31 +31,8 @@ static void			ft_resize(t_a *a, int x, int y)
 		a->yy += y + (MAX_X / 2) - tmp;
 }
 
-static void				fract_modif_forme_julia(t_a *a, int k)
-{
-	if (a->space == -1 && (k == M_PLUS || k == M_MINUS))
-	{
-		if (k == M_MINUS)
-			a->cr -= 0.25;
-		else 
-			a->cr += 0.25;
-	}
-	if (a->space == -2 && (k == M_PLUS || k == M_MINUS))
-	{
-		if (k == M_MINUS)
-			a->ci -= 0.06;
-		else 
-			a->ci += 0.06;
-	}
-	fractal_print(a);
-}
-
 int					ft_key_mouse(int k, int x, int y, t_a *a)
 {
-	ft_putnbr_end(k);
-	ft_putnbr_end(y);
-	if ((a->space == -1 || a->space == -2) && (k == M_PLUS || k == M_MINUS))
-		fract_modif_forme_julia(a, k);
 	if (a->mod_i == -1 && a->main == 1 && k == M_PLUS)
 		a->i_max += 1;
 	else if (a->mod_i == -1 && a->main == 1 && k == M_MINUS)
@@ -63,8 +40,6 @@ int					ft_key_mouse(int k, int x, int y, t_a *a)
 	else if (k == M_LEFT)	
 	{
 		ft_resize(a, x, y);
-		ft_putnbr_end(a->xx);
-		ft_putnbr_end(a->yy);
 		a->zoom *= 1.1;
 	}
 	else if (k == M_RIGHT)
@@ -85,15 +60,14 @@ int					mouse_position(int x, int y, t_a *a)
 		else 
 			a->cr += 0.10;
 	}
-	a->save_x = x;
 	if (a->space == -2)
 	{
-		if (a->save_y >= y)
+		if (a->save_x >= x)
 			a->ci -= 0.02;
 		else 
 			a->ci += 0.02;
 	}
-	a->save_y = y;
+	a->save_x = x;
 	fractal_print(a);
 	return (0);
 }
