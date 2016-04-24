@@ -137,8 +137,8 @@ void				fractal_print(t_a *a);
 **		fractol_print_message.c
 */
 void				ft_print_the_end(t_a *a);
-void				ft_print_menu(t_a *a);
 void				ft_print_sub_menu(t_a *a);
+void				ft_print_menu(t_a *a);
 
 /*
 **		main.c

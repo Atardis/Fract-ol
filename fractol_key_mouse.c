@@ -32,12 +32,19 @@ void				ft_resize(t_a *a, int x, int y, char c)
 		a->xx += (MAX_X / 2) - x;
 	else if (x > (MAX_X / 2))
 		a->xx -= x - (MAX_X / 2);
-	a->xx += (c == '*') ? ((a->xx / (tmpz * 1.1)) - (tmpx / tmpz)) : ((a->xx / (tmpz / 1.1)) - (tmpx / tmpz));
+	if (x <= (MAX_X / 2))
+		a->xx += (c == '*') ? ((a->xx / (tmpz * 1.1)) + (tmpx / tmpz)) : ((a->xx / (tmpz / 1.1)) - (tmpx / tmpz));
+	else if  (x > (MAX_X / 2))
+		a->xx -= (c == '*') ? ((a->xx / (tmpz * 1.1)) + (tmpx / tmpz)) : ((a->xx / (tmpz / 1.1)) - (tmpx / tmpz));
 	if (y <= (MAX_Y / 2))
 		a->yy += (MAX_Y / 2) - y;
 	else if (y > (MAX_Y / 2))
 		a->yy -= y - (MAX_Y / 2);
-	a->yy += (c == '/') ? ((a->yy / (tmpz * 1.1)) - (tmpy / tmpz)) : ((a->yy / (tmpz / 1.1)) - (tmpy / tmpz));
+	if (y <= (MAX_Y / 2))
+		a->yy += (c == '/') ? ((a->yy / (tmpz * 1.1)) + (tmpy / tmpz)) : ((a->yy / (tmpz / 1.1)) - (tmpy / tmpz));
+	else if (y > (MAX_Y / 2))
+		a->yy -= (c == '/') ? ((a->yy / (tmpz * 1.1)) + (tmpy / tmpz)) : ((a->yy / (tmpz / 1.1)) - (tmpy / tmpz));
+	
 	a->xx *= -1;
 	a->yy *= -1;
 

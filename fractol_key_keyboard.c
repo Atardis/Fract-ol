@@ -23,7 +23,7 @@ int					fract_key(int k, t_a *a)
 		}
 		else if (k == RIGHT)
 		{
-			a->main3 = (k == RIGHT) ? -1 : 1;
+			a->main3 = -1;
 			ft_menu(k, a, 4);
 		}
 	}
