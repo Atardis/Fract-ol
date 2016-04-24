@@ -81,7 +81,7 @@ int			mandelbar(t_a *a, int i)
 	return (i);
 }
 
-int			fire(t_a *a, int i)
+int			burning_ship(t_a *a, int i)
 {
 	double	fa_zr;
 	double	fa_zi;

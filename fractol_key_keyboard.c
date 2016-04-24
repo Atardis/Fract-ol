@@ -24,10 +24,12 @@ static void			ft_menu(int keycode, t_a *a, int c)
 			a->main2 -= 1;
 		else
 			a->main2 += 1;
+		ft_menu(keycode, a, 2);
 	}
 	else if (c == 2)
 	{
-		a->main *= -1;
+		if (c == 2 && keycode == ENTER)
+			a->main *= -1;
 		if (a->main2 == 1)
 			a->ft = &julia;
 		if (a->main2 == 2)
@@ -35,7 +37,7 @@ static void			ft_menu(int keycode, t_a *a, int c)
 		if (a->main2 == 3)
 			a->ft = &mandelbar;
 		if (a->main2 == 4)
-			a->ft = &fire;
+			a->ft = &burning_ship;
 		fractol_init_var(a);
 	}
 	else if (c == 3)
@@ -88,7 +90,6 @@ int					fract_key(int k, t_a *a)
 	{
 		if (k == LEFT)
 		{
-			a->main *= -1;
 			a->main3 = 1;
 			ft_menu(k, a, 2);
 		}

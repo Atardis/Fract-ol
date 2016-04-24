@@ -108,7 +108,7 @@ void				play_color(t_a *a, int k, int i);
 int					julia(t_a *a, int i);
 int					mandelbrot(t_a *a, int i);
 int					mandelbar(t_a *a, int i);
-int					fire(t_a *a, int i);
+int					burning_ship(t_a *a, int i);
 
 /*
 **		fractol_key_keyboard.c

@@ -21,14 +21,14 @@ static void		ft_back_menu(t_a *a, int i)
 	while (++y < (40 + i))
 	{
 		x = -1;
-		while (++x < 275)
+		while (++x < 285)
 			*(unsigned int*)(a->data + (x * (a->b)) + (y * a->l)) = 0x000000;
 	}
-	y = 4;
+	y = -1;
 	while (++y < 31)
 	{
 		x = 1835;
-		while (++x < 1890)
+		while (++x < 1920)
 			*(unsigned int*)(a->data + (x * (a->b)) + (y * a->l)) = 0x000000;
 	}
 }
@@ -52,7 +52,7 @@ static void		ft_print_info(t_a *a)
 	char *str;
 
 	ft_back_menu(a, 0);
-	mlx_string_put(a->mlx, a->win, 1850, 5, 0xFEA128, ft_itoa(a->i_max));
+	mlx_string_put(a->mlx, a->win, 1860, 4, 0x74ECDC, ft_itoa(a->i_max));
 	mlx_string_put(a->mlx, a->win, 10, 5, 0xFEA128, "Modifier I_MAX");
 	if (a->main != 1)
 	{

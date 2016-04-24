@@ -33,27 +33,27 @@ void			ft_print_the_end(t_a *a)
 static void		ft_print_sub_menu(t_a *a)
 {
 	if (a->main4 == 1)
-		str = "     ----->  Style 1";
+		a->str = "| ---->  Style 1";
 	else
-		str = "             Style 1";
+		a->str = "|       Style 1";
 	a->color = (a->main4 == 1) ? 0xFEA128 : WHITE;
-	mlx_string_put(a->mlx, a->win, 227, 50, a->color, a->str);
+	mlx_string_put(a->mlx, a->win, 276, 50, a->color, a->str);
 	if (a->main4 == 2)
-		str = "----->  Style 2";
+		a->str = "| --->   Style 2";
 	else
-		str = "        Style 2";
+		a->str = "|       Style 2";
 	a->color = (a->main4 == 2) ? 0xFEA128 : WHITE;
 	mlx_string_put(a->mlx, a->win, 276, 70, a->color, a->str);
 	if (a->main4 == 3)
-		str = "----->  Style 3";
+		a->str = "| --->   Style 3";
 	else
-		str = "        Style 3";
+		a->str = "|       Style 3";
 	a->color = (a->main4 == 3) ? 0xFEA128 : WHITE;
 	mlx_string_put(a->mlx, a->win, 276, 90, a->color, a->str);
 	if (a->main4 == 4)
-		str = "----->  Style 4";
+		a->str = "| --->   Style 4";
 	else
-		str = "        Style 4";
+		a->str = "|       Style 4";
 	a->color = (a->main4 == 4) ? 0xFEA128 : WHITE;
 	mlx_string_put(a->mlx, a->win, 276, 110, a->color, a->str);
 }
@@ -61,27 +61,27 @@ static void		ft_print_sub_menu(t_a *a)
 void			ft_print_menu(t_a *a)
 {
 	if (a->main2 == 1)
-		a->str = "----->  Fractal Julia";
+		a->str = "----->   Fractal Julia";
 	else
 		a->str = "        Fractal Julia";
 	a->color = (a->main2 == 1) ? 0xFEA128 : WHITE;
 	mlx_string_put(a->mlx, a->win, 5, 50, a->color, a->str);
 	if (a->main2 == 2)
-		a->str = "----->  Fractal Mandelbrot";
+		a->str = "----->   Fractal Mandelbrot";
 	else
 		a->str = "        Fractal Mandelbrot";
 	a->color = (a->main2 == 2) ? 0xFEA128 : WHITE;
 	mlx_string_put(a->mlx, a->win, 5, 70, a->color, a->str);
 	if (a->main2 == 3)
-		a->str = "----->  Fractal Mandelbar";
+		a->str = "----->   Fractal Mandelbar";
 	else
 		a->str = "        Fractal Mandelbar";
 	a->color = (a->main2 == 3) ? 0xFEA128 : WHITE;
 	mlx_string_put(a->mlx, a->win, 5, 90, a->color, a->str);
 	if (a->main2 == 4)
-		a->str = "----->  Fractal Fire";
+		a->str = "----->   Fractal Fire";
 	else
-		a->str = "        Fractal Fire";
+		a->str = "        Fractal BurningShip";
 	a->color = (a->main2 == 4) ? 0xFEA128 : WHITE;
 	mlx_string_put(a->mlx, a->win, 5, 110, a->color, a->str);
 	if (a->main3 == -1 && a->main2 == 1)
