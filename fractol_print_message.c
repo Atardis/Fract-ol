@@ -14,36 +14,33 @@
 
 void			ft_print_the_end(t_a *a)
 {
-	char *str;
-
-	str = " e88~~\\       e           e    e      888~~";
-	mlx_string_put(a->mlx, a->win, 460, 500, WHITE, str);
-	str = "      ,88~-_   Y88b      / 888~~  888~-_";
-	mlx_string_put(a->mlx, a->win, 1060, 500, WHITE, str);
-	str = "d888         d8b         d8b  d8b     888___";
-	mlx_string_put(a->mlx, a->win, 460, 515, WHITE, str);
-	str = "   d888     \\   Y88b    /  888___ 888   \\";
-	mlx_string_put(a->mlx, a->win, 1060, 515, WHITE, str);
-	str = "8888 __     /Y88b       d888bdY88b    888";
-	mlx_string_put(a->mlx, a->win, 460, 530, WHITE, str);
-	str = "  88888      |   Y88b  /   888    888    |";
-	mlx_string_put(a->mlx, a->win, 1060, 530, WHITE, str);
-	str = "8888   |   /  Y88b     / Y88Y Y888b   888";
-	mlx_string_put(a->mlx, a->win, 460, 545, WHITE, str);
-	str = "  88888      |    Y888/    888    888   /";
-	mlx_string_put(a->mlx, a->win, 1060, 545, WHITE, str);
-	str = "Y888   |  /____Y88b   /   YY   Y888b  888";
-	mlx_string_put(a->mlx, a->win, 460, 560, WHITE, str);
-	str = "   Y888     /      Y8/     888    888_-~";
-	mlx_string_put(a->mlx, a->win, 1060, 560, WHITE, str);
-	str = " \"88__/  /      Y88b /          Y888b 888___";
-	mlx_string_put(a->mlx, a->win, 460, 575, WHITE, str);
-	str = "     `88_ -~        Y      888___ 888 ~-_";
-	mlx_string_put(a->mlx, a->win, 1060, 575, WHITE, str);
-	
+	a->str = " e88~~\\       e           e    e      888~~";
+	mlx_string_put(a->mlx, a->win, 460, 500, WHITE, a->str);
+	a->str = "      ,88~-_   Y88b      / 888~~  888~-_";
+	mlx_string_put(a->mlx, a->win, 1060, 500, WHITE, a->str);
+	a->str = "d888         d8b         d8b  d8b     888___";
+	mlx_string_put(a->mlx, a->win, 460, 515, WHITE, a->str);
+	a->str = "   d888     \\   Y88b    /  888___ 888   \\";
+	mlx_string_put(a->mlx, a->win, 1060, 515, WHITE, a->str);
+	a->str = "8888 __     /Y88b       d888bdY88b    888";
+	mlx_string_put(a->mlx, a->win, 460, 530, WHITE, a->str);
+	a->str = "  88888      |   Y88b  /   888    888    |";
+	mlx_string_put(a->mlx, a->win, 1060, 530, WHITE, a->str);
+	a->str = "8888   |   /  Y88b     / Y88Y Y888b   888";
+	mlx_string_put(a->mlx, a->win, 460, 545, WHITE, a->str);
+	a->str = "  88888      |    Y888/    888    888   /";
+	mlx_string_put(a->mlx, a->win, 1060, 545, WHITE, a->str);
+	a->str = "Y888   |  /____Y88b   /   YY   Y888b  888";
+	mlx_string_put(a->mlx, a->win, 460, 560, WHITE, a->str);
+	a->str = "   Y888     /      Y8/     888    888_-~";
+	mlx_string_put(a->mlx, a->win, 1060, 560, WHITE, a->str);
+	a->str = " \"88__/  /      Y88b /          Y888b 888___";
+	mlx_string_put(a->mlx, a->win, 460, 575, WHITE, a->str);
+	a->str = "     `88_ -~        Y      888___ 888 ~-_";
+	mlx_string_put(a->mlx, a->win, 1060, 575, WHITE, a->str);
 }
 
-static void		ft_print_sub_menu(t_a *a)
+void			ft_print_sub_menu(t_a *a)
 {
 	if (a->main4 == 1)
 		a->str = "| ---->  Style 1";
@@ -97,6 +94,4 @@ void			ft_print_menu(t_a *a)
 		a->str = "        Fractal BurningShip";
 	a->color = (a->main2 == 4) ? 0xFEA128 : WHITE;
 	mlx_string_put(a->mlx, a->win, 5, 110, a->color, a->str);
-	if (a->main3 == -1 && a->main2 == 1)
-		ft_print_sub_menu(a);
 }

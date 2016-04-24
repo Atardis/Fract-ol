@@ -58,13 +58,9 @@ int				main(int argc, char **argv)
 
 	if (argc == 1 || argc >= 4)
 		ft_print_help(&a);
-	a.argv3 = 1;
+	a.argv3 = -1;
 	if (argc == 3)
-	{
-		a.argv3 = (!(ft_atoi(argv[2]))) ? 75 : ft_atoi(argv[2]);
-		if (a.argv3 < 0)
-			a.argv3 *= -1;
-	}
+		a.argv3 = (ft_atoi(argv[2]) == 0) ? 75 : ft_atoi(argv[2]);
 	verif_argv(argv[1], &a);
 	fract_init(&a);
 	fractal_print(&a);

@@ -12,78 +12,6 @@
 
 #include "fractol.h"
 
-static void			ft_menu(int keycode, t_a *a, int c)
-{
-	if (c == 1)
-	{
-		if (a->main2 == 1 && keycode == UP)
-			a->main2 = 4;
-		else if (a->main2 == 4 && keycode == DOWN)
-			a->main2 = 1;
-		else if (keycode == UP)
-			a->main2 -= 1;
-		else
-			a->main2 += 1;
-		ft_menu(keycode, a, 2);
-	}
-	else if (c == 2)
-	{
-		if (c == 2 && keycode == ENTER)
-			a->main *= -1;
-		if (a->main2 == 1)
-			a->ft = &julia;
-		if (a->main2 == 2)
-			a->ft = &mandelbrot;
-		if (a->main2 == 3)
-			a->ft = &mandelbar;
-		if (a->main2 == 4)
-			a->ft = &burning_ship;
-		fractol_init_var(a);
-	}
-	else if (c == 3)
-	{
-		if (a->main4 == 1 && keycode == UP)
-			a->main4 = 4;
-		else if (a->main4 == 4 && keycode == DOWN)
-			a->main4 = 1;
-		else if (keycode == UP)
-			a->main4 -= 1;
-		else
-			a->main4 += 1;
-	}
-	else if (c == 4)
-	{
-		fractol_init_var(a);
-		if (a->main4 == 1)
-		{
-			a->cr = -0.7269;
-			a->ci = 0.1889;
-		}
-		if (a->main4 == 2)
-		{
-			a->cr = -0.70176;
-			a->ci = -0.3842;
-		}
-		if (a->main4 == 3)
-		{
-			a->cr = -0.4;
-			a->ci = 0.6;
-		}
-		if (a->main4 == 4)
-		{
-			a->cr = -0.8;
-			a->ci = 0.156;
-		}
-		fractal_print(a);
-	}
-	else if (c == 5)
-	{
-		a->main *= -1;
-		a->main3 *= -1;
-		ft_menu(keycode, a, 4);
-	}
-}
-
 int					fract_key(int k, t_a *a)
 {
 	if ((k == RIGHT || k == LEFT) && a->main == -1 && a->main2 == 1)
@@ -148,6 +76,5 @@ int					fract_key(int k, t_a *a)
 	else if (a->mod_i == -1 && a->main == 1 && k == MINUS && a->i_max >= 1)
 		(a->i_max == 0) ? (a->i_max = 0) : (a->i_max -= 1);
 	fractal_print(a);
-	
 	return (0);
 }

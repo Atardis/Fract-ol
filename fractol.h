@@ -121,6 +121,12 @@ int					fract_key(int k, t_a *a);
 */
 int					ft_key_mouse(int k, int x, int y, t_a *a);
 int					mouse_position(int x, int y, t_a *a);
+void				ft_resize(t_a *a, int x, int y, char c);
+
+/*
+**		fractol_menu.c
+*/
+void				ft_menu(int keycode, t_a *a, int c);
 
 /*
 **		fractol_print.c
@@ -132,6 +138,7 @@ void				fractal_print(t_a *a);
 */
 void				ft_print_the_end(t_a *a);
 void				ft_print_menu(t_a *a);
+void				ft_print_sub_menu(t_a *a);
 
 /*
 **		main.c

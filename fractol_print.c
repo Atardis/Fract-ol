@@ -75,6 +75,8 @@ static void		ft_print_verif_menu(t_a *a)
 	if (a->main != 1 && a->main3 != 1 && a->main2 == 1)
 		ft_back_sub_menu(a);
 	ft_back_menu(a, 0);
+	if (a->main3 == -1 && a->main2 == 1)
+		ft_print_sub_menu(a);
 }
 
 void			fractal_print(t_a *a)
