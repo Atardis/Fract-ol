@@ -16,18 +16,31 @@ void			ft_print_the_end(t_a *a)
 {
 	char *str;
 
-	str = " e88~~\\       e           e    e      888~~                      ,88~-_   Y88b      / 888~~  888~-_";
+	str = " e88~~\\       e           e    e      888~~";
 	mlx_string_put(a->mlx, a->win, 460, 500, WHITE, str);
-	str = "d888         d8b         d8b  d8b     888___                    d888   \\   Y88b    /  888___ 888   \\";
+	str = "      ,88~-_   Y88b      / 888~~  888~-_";
+	mlx_string_put(a->mlx, a->win, 1060, 500, WHITE, str);
+	str = "d888         d8b         d8b  d8b     888___";
 	mlx_string_put(a->mlx, a->win, 460, 515, WHITE, str);
-	str = "8888 __     /Y88b       d888bdY88b    888                      88888    |   Y88b  /   888    888    |";
+	str = "   d888     \\   Y88b    /  888___ 888   \\";
+	mlx_string_put(a->mlx, a->win, 1060, 515, WHITE, str);
+	str = "8888 __     /Y88b       d888bdY88b    888";
 	mlx_string_put(a->mlx, a->win, 460, 530, WHITE, str);
-	str = "8888   |   /  Y88b     / Y88Y Y888b   888                      88888    |    Y888/    888    888   /";
+	str = "  88888      |   Y88b  /   888    888    |";
+	mlx_string_put(a->mlx, a->win, 1060, 530, WHITE, str);
+	str = "8888   |   /  Y88b     / Y88Y Y888b   888";
 	mlx_string_put(a->mlx, a->win, 460, 545, WHITE, str);
-	str = "Y888   |  /____Y88b   /   YY   Y888b  888                       Y888   /      Y8/     888    888_-~";
+	str = "  88888      |    Y888/    888    888   /";
+	mlx_string_put(a->mlx, a->win, 1060, 545, WHITE, str);
+	str = "Y888   |  /____Y88b   /   YY   Y888b  888";
 	mlx_string_put(a->mlx, a->win, 460, 560, WHITE, str);
-	str = " \"88__/  /      Y88b /          Y888b 888___                     `88_-~        Y      888___ 888 ~-_";
+	str = "   Y888     /      Y8/     888    888_-~";
+	mlx_string_put(a->mlx, a->win, 1060, 560, WHITE, str);
+	str = " \"88__/  /      Y88b /          Y888b 888___";
 	mlx_string_put(a->mlx, a->win, 460, 575, WHITE, str);
+	str = "     `88_ -~        Y      888___ 888 ~-_";
+	mlx_string_put(a->mlx, a->win, 1060, 575, WHITE, str);
+	
 }
 
 static void		ft_print_sub_menu(t_a *a)

@@ -42,6 +42,7 @@
 # define M 46
 # define N 45
 # define O 31
+# define R 15
 # define M_PLUS 4
 # define M_MINUS 5
 # define M_LEFT 1

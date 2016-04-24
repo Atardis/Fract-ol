@@ -93,31 +93,31 @@ int					fract_key(int k, t_a *a)
 			a->main3 = 1;
 			ft_menu(k, a, 2);
 		}
-		if (k == RIGHT)
+		else if (k == RIGHT)
 		{
 			a->main3 = (k == RIGHT) ? -1 : 1;
 			ft_menu(k, a, 4);
 		}
 	}
-	if (k == O)
+	else if (k == O)
 	{
 		fractol_init_var(a);
 		fractal_print(a);
 	}
-	if (k == SPACE && a->space == 1)
+	else if (k == SPACE && a->space == 1)
 		a->space += -2;
 	else if (k == SPACE && a->space == -1)
 		a->space += -1;
 	else if (k == SPACE && a->space == -2)
 		a->space = 1;
-	if (a->main == 1 && (k == LEFT || k == RIGHT))
+	else if (a->main == 1 && (k == LEFT || k == RIGHT))
 		a->xx -= (k == LEFT) ? 30 : -30;
-	if (a->main == 1 && (k == UP || k == DOWN))
+	else if (a->main == 1 && (k == UP || k == DOWN))
 		a->yy -= (k == UP) ? 30 : -30;
-	if (k == Q || k == W)
+	else if (k == Q || k == W)
 		a->k = (k == Q) ? Q : W;
-	if (k == E)
-		a->k = E;
+	else if (k == E || k == R)
+		a->k = (k == E) ? E : R;
 	else if (k == ESC)
 		ft_error("ESC: Good Bye My Friend .. YOLO");
 	else if (k == M)
@@ -139,11 +139,15 @@ int					fract_key(int k, t_a *a)
 	else if (a->mod_i < 0 && k == PLUS && a->i_max < 0)
 		a->i_max = 0;
 	else if (a->mod_i == 1 && a->main == 1 && (k == PLUS || k == MINUS))
+	{
 		(k == PLUS) ? (a->zoom *= 1.1) : (a->zoom *= 0.9);
+		ft_putnbr_end(a->zoom);
+	}
 	else if (a->mod_i == -1 && a->main == 1 && k == PLUS)
 		a->i_max += 1;
 	else if (a->mod_i == -1 && a->main == 1 && k == MINUS && a->i_max >= 1)
 		(a->i_max == 0) ? (a->i_max = 0) : (a->i_max -= 1);
 	fractal_print(a);
+	
 	return (0);
 }

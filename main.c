@@ -61,7 +61,7 @@ int				main(int argc, char **argv)
 	a.argv3 = 1;
 	if (argc == 3)
 	{
-		a.argv3 = (!(ft_atoi(argv[2]))) ? 115 : ft_atoi(argv[2]);
+		a.argv3 = (!(ft_atoi(argv[2]))) ? 75 : ft_atoi(argv[2]);
 		if (a.argv3 < 0)
 			a.argv3 *= -1;
 	}

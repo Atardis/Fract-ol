@@ -20,6 +20,8 @@ static int		choose_color(t_a *a)
 		return (0x00CC00FF);
 	else if (a->k == E)
 		return (0x00F0F0F0);
+	else if (a->k == R)
+		return (0x004BB5C1);
 	return (0x004BB5C1);
 }
 
