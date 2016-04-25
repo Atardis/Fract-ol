@@ -56,7 +56,7 @@ name:
 
 help:
 	@echo "\033[33;32m- make        \033[33;31m(Compile)"
-	@echo "\033[33;32m- make fclean \033[33;31m(Destruction all files  .O and Program)"
+	@echo "\033[33;32m- make fclean \033[33;31m(Destruction files .O and Program)"
 	@echo "\033[33;32m- make clean  \033[33;31m(Destruction files .O)"
 	@echo "\033[33;32m- make re     \033[33;31m(Recompile)"
 	@echo "\033[33;32m- make name   \033[33;31m(Print Name of Program)"

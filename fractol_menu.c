@@ -56,8 +56,9 @@ static void			ft_menu3(int keycode, t_a *a)
 	}
 	if (a->main4 == 3)
 	{
-		a->cr = -0.4;
-		a->ci = 0.6;
+		a->cr = -0.772691322542185;
+		a->ci = 0.124281466072787;
+		a->i_max = 83;4
 	}
 	if (a->main4 == 4)
 	{
