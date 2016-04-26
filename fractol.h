@@ -93,6 +93,11 @@ typedef struct		s_a
 	int				y;
 	int				b;
 	int				l;
+	int				tmp_x;
+	int				tmp_y;
+	int				tmp_z;
+	int				tmp_xx;
+	int				tmp_yy;
 }					t_a;
 
 /*

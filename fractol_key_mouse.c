@@ -14,35 +14,25 @@
 
 void				ft_resize(t_a *a, int x, int y, char c)
 {
-	int				tmp_x;
-	int				tmp_y;
-	int				tmp_z;
-	int				tmp_xx;
-	int				tmp_yy;
-
 	a->xx *= -1;
 	a->yy *= -1;
-	tmp_z = a->zoom;
+	a->tmp_z = a->zoom;
 	if (c == '*')
 		a->zoom *= 1.1;
 	else if (c == '/')
 		a->zoom /= 1.1;
 	if (x <= a->xx)
-		tmp_x = -(a->xx - x);
+		a->tmp_x = -(a->xx - x);
 	else if (x > -a->xx)
-		tmp_x = x - a->xx;
+		a->tmp_x = x - a->xx;
 	if (y <= a->yy)
-		tmp_y = a->yy - y;
+		a->tmp_y = a->yy - y;
 	else if (y > a->yy)
-		tmp_y = -(y - a->yy);
-	if (c == '*')
-		a->zoom *= 1.1;
-	else if (c == '/')
-		a->zoom /= 1.1;
-	tmp_xx = ((a->zoom * tmp_x) / tmp_z);
-	tmp_yy = ((a->zoom * tmp_y) / tmp_z);
-	a->xx -= tmp_xx - tmp_x;
-	a->yy += tmp_yy - tmp_y;
+		a->tmp_y = -(y - a->yy);
+	a->tmp_xx = ((a->zoom * a->tmp_x) / a->tmp_z);
+	a->tmp_yy = ((a->zoom * a->tmp_y) / a->tmp_z);
+	a->xx -= a->tmp_xx - a->tmp_x;
+	a->yy += a->tmp_yy - a->tmp_y;
 	a->xx *= -1;
 	a->yy *= -1;
 }
