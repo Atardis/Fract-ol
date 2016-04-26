@@ -34,6 +34,7 @@
 # define ESC 53
 # define ENTER 36
 # define SPACE 49
+# define SLASH 75
 # define Q 12
 # define W 13
 # define E 14
@@ -66,6 +67,10 @@ typedef struct		s_a
 	int				main3;
 	int				main4;
 	int				color;
+	int				slash;
+	int				tmpx;
+	int				tmpy;
+	int				tmpz;
 	char			*str;
 	int				k;
 	int				argv3;

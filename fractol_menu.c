@@ -46,8 +46,9 @@ static void			ft_menu3(int keycode, t_a *a)
 	fractol_init_var(a);
 	if (a->main4 == 1)
 	{
-		a->cr = -0.7269;
-		a->ci = 0.1889;
+		a->cr = -0.0986;
+		a->ci = -0.65186;
+		a->i_max = 115;
 	}
 	if (a->main4 == 2)
 	{

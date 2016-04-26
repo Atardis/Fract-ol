@@ -49,18 +49,18 @@ static void		ft_back_sub_menu(t_a *a)
 
 static void		ft_print_info(t_a *a)
 {
-	char *str;
-
 	ft_back_menu(a, 0);
-	mlx_string_put(a->mlx, a->win, 1860, 4, 0x74ECDC, ft_itoa(a->i_max));
+	a->str = ft_itoa(a->i_max);
+	mlx_string_put(a->mlx, a->win, 1860, 4, 0x74ECDC, a->str);
+	free(a->str);
 	mlx_string_put(a->mlx, a->win, 10, 5, 0xFEA128, "Modifier I_MAX");
 	if (a->main != 1)
 	{
-		str = "--------------------------";
-		mlx_string_put(a->mlx, a->win, 5, 25, 0x2C8CBC, str);
+		a->str = "--------------------------";
+		mlx_string_put(a->mlx, a->win, 5, 25, 0x2C8CBC, a->str);
 		ft_print_menu(a);
 		if (a->main2 == 1 && a->main3 == -1)
-		ft_print_sub_menu(a);
+			ft_print_sub_menu(a);
 	}
 	if (a->mod_i != 1)
 		mlx_string_put(a->mlx, a->win, 160, 5, 0xB5E655, "Activated");

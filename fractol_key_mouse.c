@@ -14,40 +14,37 @@
 
 void				ft_resize(t_a *a, int x, int y, char c)
 {
-	int				tmpx;
-	int				tmpy;
-	int				tmpz;
-	int				result;
+	int				tmp_x;
+	int				tmp_y;
+	int				tmp_z;
+	int				tmp_xx;
+	int				tmp_yy;
 
-	tmpx = a->xx;
-	tmpy = a->yy;
-	tmpz = a->zoom;
+	a->xx *= -1;
+	a->yy *= -1;
+	tmp_z = a->zoom;
 	if (c == '*')
 		a->zoom *= 1.1;
-	else
+	else if (c == '/')
 		a->zoom /= 1.1;
+	if (x <= a->xx)
+		tmp_x = -(a->xx - x);
+	else if (x > -a->xx)
+		tmp_x = x - a->xx;
+	if (y <= a->yy)
+		tmp_y = a->yy - y;
+	else if (y > a->yy)
+		tmp_y = -(y - a->yy);
+	if (c == '*')
+		a->zoom *= 1.1;
+	else if (c == '/')
+		a->zoom /= 1.1;
+	tmp_xx = ((a->zoom * tmp_x) / tmp_z);
+	tmp_yy = ((a->zoom * tmp_y) / tmp_z);
+	a->xx -= tmp_xx - tmp_x;
+	a->yy += tmp_yy - tmp_y;
 	a->xx *= -1;
 	a->yy *= -1;
-	if (x <= (MAX_X / 2))
-		a->xx += (MAX_X / 2) - x;
-	else if (x > (MAX_X / 2))
-		a->xx -= x - (MAX_X / 2);
-	// if (x <= (MAX_X / 2))
-	// 	a->xx += (c == '*') ? ((a->xx / (tmpz * 1.1)) + (tmpx / tmpz)) : ((a->xx / (tmpz / 1.1)) - (tmpx / tmpz));
-	// else if  (x > (MAX_X / 2))
-	// 	a->xx -= (c == '*') ? ((a->xx / (tmpz * 1.1)) + (tmpx / tmpz)) : ((a->xx / (tmpz / 1.1)) - (tmpx / tmpz));
-	if (y <= (MAX_Y / 2))
-		a->yy += (MAX_Y / 2) - y;
-	else if (y > (MAX_Y / 2))
-		a->yy -= y - (MAX_Y / 2);
-	// if (y <= (MAX_Y / 2))
-	// 	a->yy += (c == '/') ? ((a->yy / (tmpz * 1.1)) + (tmpy / tmpz)) : ((a->yy / (tmpz / 1.1)) - (tmpy / tmpz));
-	// else if (y > (MAX_Y / 2))
-	// 	a->yy -= (c == '/') ? ((a->yy / (tmpz * 1.1)) + (tmpy / tmpz)) : ((a->yy / (tmpz / 1.1)) - (tmpy / tmpz));
-
-	a->xx *= -1;
-	a->yy *= -1;
-
 }
 
 int					ft_key_mouse(int k, int x, int y, t_a *a)
@@ -70,19 +67,27 @@ int					ft_key_mouse(int k, int x, int y, t_a *a)
 
 int					mouse_position(int x, int y, t_a *a)
 {
-	if (a->space == -1)
+	if (a->slash == 1)
 	{
-		if (a->save_x >= x)
-			a->cr -= 0.10;
-		else
-			a->cr += 0.10;
+		if (a->space == -1)
+		{
+			if (a->save_x >= x)
+				a->cr -= 0.10;
+			else
+				a->cr += 0.10;
+		}
+		if (a->space == -2)
+		{
+			if (a->save_x >= x)
+				a->ci -= 0.02;
+			else
+				a->ci += 0.02;
+		}
 	}
-	if (a->space == -2)
+	if (a->slash == -1)
 	{
-		if (a->save_x >= x)
-			a->ci -= 0.02;
-		else
-			a->ci += 0.02;
+		a->xx = -x;
+		a->yy = -y;
 	}
 	a->save_x = x;
 	fractal_print(a);
