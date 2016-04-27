@@ -34,7 +34,7 @@
 # define ESC 53
 # define ENTER 36
 # define SPACE 49
-# define SLASH 75
+# define SLASH 24
 # define Q 12
 # define W 13
 # define E 14
@@ -73,7 +73,6 @@ typedef struct		s_a
 	int				tmpz;
 	char			*str;
 	int				k;
-	int				argv3;
 	int				space;
 	int				save_x;
 	int				save_y;
@@ -93,11 +92,11 @@ typedef struct		s_a
 	int				y;
 	int				b;
 	int				l;
-	int				tmp_x;
-	int				tmp_y;
-	int				tmp_z;
-	int				tmp_xx;
-	int				tmp_yy;
+	double			tmp_x;
+	double			tmp_y;
+	double			tmp_z;
+	double			tmp_xx;
+	double			tmp_yy;
 }					t_a;
 
 /*

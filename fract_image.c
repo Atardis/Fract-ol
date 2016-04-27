@@ -30,7 +30,7 @@ void		fract_new_image(t_a *a)
 void		fractol_init_var(t_a *a)
 {
 	a->lock = 1;
-	if (a->argv3 < 0)
+	if (a->i_max <= 0)
 		a->i_max = 75;
 	a->zoom = 259;
 	a->ox = -(MAX_X / 2);

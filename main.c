@@ -58,16 +58,19 @@ int				main(int argc, char **argv)
 
 	if (argc == 1 || argc >= 4)
 		ft_print_help(&a);
-	a.argv3 = -1;
+	a.i_max = -1;
 	if (argc == 3)
 	{
-		if (!(ft_atoi(argv[2])))
+		ft_putnbr_end(ft_atoi(argv[2]));
+		if (ft_atoi(argv[2]) >= 0)
 			a.i_max = ft_atoi(argv[2]);
-		if (a.argv3 < 0)
-			a.argv3 *= -1;
+		ft_putnbr_end(a.i_max);
+		if (a.i_max < 0)
+			a.i_max *= -1;
 	}
 	verif_argv(argv[1], &a);
 	fract_init(&a);
+	fract_new_image(&a);
 	fractal_print(&a);
 	mlx_hook(a.win, 2, 1L << 1, fract_key, &a);
 	mlx_hook(a.win, 6, 1L << 6, mouse_position, &a);

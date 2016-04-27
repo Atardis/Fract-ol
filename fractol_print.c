@@ -83,7 +83,8 @@ void			fractal_print(t_a *a)
 {
 	int			i;
 
-	fract_new_image(a);
+	mlx_clear_window(a->mlx, a->win);
+	ft_bzero(a->data, (MAX_X * MAX_Y));
 	a->y = -1;
 	a->tmp_zi = a->zi;
 	while (++a->y < MAX_Y)
@@ -102,5 +103,4 @@ void			fractal_print(t_a *a)
 	ft_print_verif_menu(a);
 	mlx_put_image_to_window(a->mlx, a->win, a->img, 0, 0);
 	ft_print_info(a);
-	mlx_destroy_image(a->mlx, a->img);
 }

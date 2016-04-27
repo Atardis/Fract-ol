@@ -40,9 +40,9 @@ void				ft_resize(t_a *a, int x, int y, char c)
 int					ft_key_mouse(int k, int x, int y, t_a *a)
 {
 	if (a->mod_i == -1 && a->main == 1 && k == M_PLUS)
-		a->i_max += 5;
+		a->i_max += 1;
 	else if (a->mod_i == -1 && a->main == 1 && k == M_MINUS)
-		a->i_max -= (a->i_max == 0) ? 0 : 5;
+		a->i_max -= (a->i_max == 0) ? 0 : 1;
 	else if (a->mod_i == 1 && a->main == 1 && k == M_PLUS)
 		ft_resize(a, x, y, '*');
 	else if (a->mod_i == 1 && a->main == 1 && k == M_MINUS)
@@ -69,9 +69,9 @@ int					mouse_position(int x, int y, t_a *a)
 		if (a->space == -2)
 		{
 			if (a->save_x >= x)
-				a->ci -= 0.02;
+				a->ci -= 0.0002;
 			else
-				a->ci += 0.02;
+				a->ci += 0.0002;
 		}
 	}
 	if (a->slash == -1)
