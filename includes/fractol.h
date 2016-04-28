@@ -13,14 +13,14 @@
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# include "libft/includes/libft.h"
+# include "../libft/includes/libft.h"
 # include <mlx.h>
 # include <fcntl.h>
 # include <math.h>
 
-# define MAX_X 1920
-# define MAX_Y 1080
-# define TITLE "Fractol 42 by Gautier Hubault"
+# define MAX_X 1280
+# define MAX_Y 720
+# define TITLE "Fractol 42   by Gautier Hubault dit le Christ Cosmique"
 
 # define BLACK 0x000000
 # define WHITE 0xFFFFFF
@@ -81,13 +81,13 @@ typedef struct		s_a
 	double			zoom;
 	double			ox;
 	double			oy;
-	double			xx;
-	double			yy;
+	long double			xx;
+	long double			yy;
 	double			zi;
 	double			zr;
 	double			cr;
 	double			ci;
-	double			tmp_zi;
+	long double			tmp_zi;
 	int				x;
 	int				y;
 	int				b;

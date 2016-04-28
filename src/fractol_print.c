@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "../includes/fractol.h"
 
 static void		ft_back_menu(t_a *a, int i)
 {
@@ -27,8 +27,8 @@ static void		ft_back_menu(t_a *a, int i)
 	y = -1;
 	while (++y < 31)
 	{
-		x = 1835;
-		while (++x < 1920)
+		x = (MAX_X - 50);
+		while (++x < MAX_X)
 			*(unsigned int*)(a->data + (x * (a->b)) + (y * a->l)) = 0x000000;
 	}
 }
@@ -51,7 +51,7 @@ static void		ft_print_info(t_a *a)
 {
 	ft_back_menu(a, 0);
 	a->str = ft_itoa(a->i_max);
-	mlx_string_put(a->mlx, a->win, 1860, 4, 0x74ECDC, a->str);
+	mlx_string_put(a->mlx, a->win, (MAX_X - 40), 4, 0x74ECDC, a->str);
 	free(a->str);
 	mlx_string_put(a->mlx, a->win, 10, 5, 0xFEA128, "Modifier I_MAX");
 	if (a->main != 1)

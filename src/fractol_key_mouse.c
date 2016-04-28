@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "../includes/fractol.h"
 
 void				ft_resize(t_a *a, int x, int y, char c)
 {
@@ -18,9 +18,9 @@ void				ft_resize(t_a *a, int x, int y, char c)
 	a->yy *= -1;
 	a->tmp_z = a->zoom;
 	if (c == '*')
-		a->zoom *= 1.1;
+		a->zoom *= 2;
 	else if (c == '/')
-		a->zoom /= 1.1;
+		a->zoom /= 2;
 	if (x <= a->xx)
 		a->tmp_x = -(a->xx - x);
 	else if (x > -a->xx)
@@ -29,8 +29,25 @@ void				ft_resize(t_a *a, int x, int y, char c)
 		a->tmp_y = a->yy - y;
 	else if (y > a->yy)
 		a->tmp_y = -(y - a->yy);
-	a->tmp_xx = ((a->zoom * a->tmp_x) / a->tmp_z);
-	a->tmp_yy = ((a->zoom * a->tmp_y) / a->tmp_z);
+	ft_putstr("a->zoom  :");
+	ft_putnbr(a->zoom);
+	ft_putstr("   a->tmp_x  :");
+	ft_putnbr(a->tmp_x);
+	ft_putstr("   a->tmp_z  :");
+	ft_putnbr_end(a->tmp_z);
+	ft_putstr("a->zoom  :");
+	ft_putnbr(a->zoom);
+	ft_putstr("   a->tmp_y  :");
+	ft_putnbr(a->tmp_y);
+	ft_putstr("   a->tmp_z  :");
+	ft_putnbr_end(a->tmp_z);
+	a->tmp_xx = (((int)a->zoom * (int)a->tmp_x) / a->tmp_z);
+	a->tmp_yy = (((int)a->zoom * (int)a->tmp_y) / a->tmp_z);
+	ft_putnbr(a->tmp_xx - a->tmp_x);
+	ft_putchar('\n');
+	ft_putnbr(-(a->tmp_yy - a->tmp_x));
+	ft_putchar('\n');
+	ft_putchar('\n');
 	a->xx -= a->tmp_xx - a->tmp_x;
 	a->yy += a->tmp_yy - a->tmp_y;
 	a->xx *= -1;
@@ -62,16 +79,16 @@ int					mouse_position(int x, int y, t_a *a)
 		if (a->space == -1)
 		{
 			if (a->save_x >= x)
-				a->cr -= 0.10;
+				a->cr -= 0.1;
 			else
-				a->cr += 0.10;
+				a->cr += 0.1;
 		}
 		if (a->space == -2)
 		{
 			if (a->save_x >= x)
-				a->ci -= 0.0002;
+				a->ci -= 0.02;
 			else
-				a->ci += 0.0002;
+				a->ci += 0.02;
 		}
 	}
 	if (a->slash == -1)
