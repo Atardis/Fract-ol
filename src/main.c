@@ -61,10 +61,8 @@ int				main(int argc, char **argv)
 	a.i_max = -1;
 	if (argc == 3)
 	{
-		ft_putnbr_end(ft_atoi(argv[2]));
 		if (ft_atoi(argv[2]) >= 0)
 			a.i_max = ft_atoi(argv[2]);
-		ft_putnbr_end(a.i_max);
 		if (a.i_max < 0)
 			a.i_max *= -1;
 	}

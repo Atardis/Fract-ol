@@ -51,6 +51,7 @@
 # define M_RIGHT 2
 # define FOIS 67
 # define ELEVEN 27
+# define TEN 29
 
 typedef struct		s_a
 {
@@ -89,7 +90,7 @@ typedef struct		s_a
 	double			zr;
 	double			cr;
 	double			ci;
-	long double			tmp_zi;
+	long double		tmp_zi;
 	int				x;
 	int				y;
 	int				b;

@@ -15,29 +15,29 @@
 void			ft_print_the_end(t_a *a)
 {
 	a->str = " e88~~\\       e           e    e      888~~";
-	mlx_string_put(a->mlx, a->win, 460, 500, WHITE, a->str);
+	mlx_string_put(a->mlx, a->win, 250, 350, WHITE, a->str);
 	a->str = "      ,88~-_   Y88b      / 888~~  888~-_";
-	mlx_string_put(a->mlx, a->win, 1060, 500, WHITE, a->str);
+	mlx_string_put(a->mlx, a->win, 800, 350, WHITE, a->str);
 	a->str = "d888         d8b         d8b  d8b     888___";
-	mlx_string_put(a->mlx, a->win, 460, 515, WHITE, a->str);
+	mlx_string_put(a->mlx, a->win, 250, 365, WHITE, a->str);
 	a->str = "   d888     \\   Y88b    /  888___ 888   \\";
-	mlx_string_put(a->mlx, a->win, 1060, 515, WHITE, a->str);
+	mlx_string_put(a->mlx, a->win, 800, 365, WHITE, a->str);
 	a->str = "8888 __     /Y88b       d888bdY88b    888";
-	mlx_string_put(a->mlx, a->win, 460, 530, WHITE, a->str);
+	mlx_string_put(a->mlx, a->win, 250, 380, WHITE, a->str);
 	a->str = "  88888      |   Y88b  /   888    888    |";
-	mlx_string_put(a->mlx, a->win, 1060, 530, WHITE, a->str);
+	mlx_string_put(a->mlx, a->win, 800, 380, WHITE, a->str);
 	a->str = "8888   |   /  Y88b     / Y88Y Y888b   888";
-	mlx_string_put(a->mlx, a->win, 460, 545, WHITE, a->str);
+	mlx_string_put(a->mlx, a->win, 250, 395, WHITE, a->str);
 	a->str = "  88888      |    Y888/    888    888   /";
-	mlx_string_put(a->mlx, a->win, 1060, 545, WHITE, a->str);
+	mlx_string_put(a->mlx, a->win, 800, 395, WHITE, a->str);
 	a->str = "Y888   |  /____Y88b   /   YY   Y888b  888";
-	mlx_string_put(a->mlx, a->win, 460, 560, WHITE, a->str);
+	mlx_string_put(a->mlx, a->win, 250, 410, WHITE, a->str);
 	a->str = "   Y888     /      Y8/     888    888_-~";
-	mlx_string_put(a->mlx, a->win, 1060, 560, WHITE, a->str);
+	mlx_string_put(a->mlx, a->win, 800, 410, WHITE, a->str);
 	a->str = " \"88__/  /      Y88b /          Y888b 888___";
-	mlx_string_put(a->mlx, a->win, 460, 575, WHITE, a->str);
+	mlx_string_put(a->mlx, a->win, 250, 425, WHITE, a->str);
 	a->str = "     `88_ -~        Y      888___ 888 ~-_";
-	mlx_string_put(a->mlx, a->win, 1060, 575, WHITE, a->str);
+	mlx_string_put(a->mlx, a->win, 800, 425, WHITE, a->str);
 }
 
 void			ft_print_sub_menu(t_a *a)

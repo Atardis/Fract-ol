@@ -62,16 +62,15 @@ static void				fract_key_move(int k, t_a *a)
 
 int						fract_key(int k, t_a *a)
 {
-	ft_putnbr_end(k);
 	fract_key_menu(k, a);
 	fract_key_move(k, a);
 	if (k == SLASH)
 		a->slash *= -1;
-	if (k == SPACE && a->space == 1)
+	if ((k == SPACE || k == TEN) && a->space == 1)
 		a->space += -2;
-	else if (k == SPACE && a->space == -1)
+	else if ((k == SPACE || k == TEN) && a->space == -1)
 		a->space += -1;
-	else if (k == SPACE && a->space == -2)
+	else if ((k == SPACE || k == TEN) && a->space == -2)
 		a->space = 1;
 	else if (k == Q || k == W)
 		a->k = (k == Q) ? Q : W;
