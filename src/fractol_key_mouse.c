@@ -23,31 +23,14 @@ void				ft_resize(t_a *a, int x, int y, char c)
 		a->zoom /= 2;
 	if (x <= a->xx)
 		a->tmp_x = -(a->xx - x);
-	else if (x > -a->xx)
+	if (x > a->xx)
 		a->tmp_x = x - a->xx;
 	if (y <= a->yy)
 		a->tmp_y = a->yy - y;
-	else if (y > a->yy)
+	if (y > a->yy)
 		a->tmp_y = -(y - a->yy);
-	ft_putstr("a->zoom  :");
-	ft_putnbr(a->zoom);
-	ft_putstr("   a->tmp_x  :");
-	ft_putnbr(a->tmp_x);
-	ft_putstr("   a->tmp_z  :");
-	ft_putnbr_end(a->tmp_z);
-	ft_putstr("a->zoom  :");
-	ft_putnbr(a->zoom);
-	ft_putstr("   a->tmp_y  :");
-	ft_putnbr(a->tmp_y);
-	ft_putstr("   a->tmp_z  :");
-	ft_putnbr_end(a->tmp_z);
-	a->tmp_xx = (((int)a->zoom * (int)a->tmp_x) / a->tmp_z);
-	a->tmp_yy = (((int)a->zoom * (int)a->tmp_y) / a->tmp_z);
-	ft_putnbr(a->tmp_xx - a->tmp_x);
-	ft_putchar('\n');
-	ft_putnbr(-(a->tmp_yy - a->tmp_x));
-	ft_putchar('\n');
-	ft_putchar('\n');
+	a->tmp_xx = ((a->zoom * a->tmp_x) / a->tmp_z);
+	a->tmp_yy = ((a->zoom * a->tmp_y) / a->tmp_z);
 	a->xx -= a->tmp_xx - a->tmp_x;
 	a->yy += a->tmp_yy - a->tmp_y;
 	a->xx *= -1;
@@ -56,18 +39,24 @@ void				ft_resize(t_a *a, int x, int y, char c)
 
 int					ft_key_mouse(int k, int x, int y, t_a *a)
 {
-	if (a->mod_i == -1 && a->main == 1 && k == M_PLUS)
+	if (a->mod_i == -1 && a->main == 1 && k == M_PLUS && a->mod_i != -1)
 		a->i_max += 1;
-	else if (a->mod_i == -1 && a->main == 1 && k == M_MINUS)
+	else if (a->mod_i == -1 && a->main == 1 && k == M_MINUS && a->mod_i != -1)
 		a->i_max -= (a->i_max == 0) ? 0 : 1;
-	else if (a->mod_i == 1 && a->main == 1 && k == M_PLUS)
+	else if (a->mod_i == 1 && a->main == 1 && k == M_PLUS && a->mod_i != -1)
 		ft_resize(a, x, y, '*');
-	else if (a->mod_i == 1 && a->main == 1 && k == M_MINUS)
+	else if (a->mod_i == 1 && a->main == 1 && k == M_MINUS && a->mod_i != -1)
 		ft_resize(a, x, y, '/');
 	else if (k == M_LEFT)
 		ft_resize(a, x, y, '*');
 	else if (k == M_RIGHT)
 		ft_resize(a, x, y, '/');
+	else if (k == ELEVEN)
+		a->mod_i *= -1;
+	else if (a->mod_i == -1 && (k == M_PLUS || k == M_MINUS))
+		a->i_max += (k == M_PLUS) ? 1 : -1;
+	else if (a->mod_i == -1 && k == M_MINUS)
+		a->i_max -= (a->i_max) ? 0 : 1;
 	fractal_print(a);
 	return (0);
 }

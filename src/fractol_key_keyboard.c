@@ -47,10 +47,10 @@ static void				fract_key_move(int k, t_a *a)
 		a->xx -= (k == LEFT) ? 30 : -30;
 	else if (a->main == 1 && (k == UP || k == DOWN))
 		a->yy -= (k == UP) ? 30 : -30;
-	else if (a->mod_i < 0 && k == PLUS && a->i_max < 0)
+	else if (a->mod_i == -1 && k == PLUS && a->i_max < 0)
 		a->i_max = 0;
 	else if (a->mod_i == 1 && a->main == 1 && (k == PLUS || k == MINUS))
-		(k == PLUS) ? (a->zoom *= 1.1) : (a->zoom *= 0.9);
+		(k == PLUS) ? (a->zoom *= 2) : (a->zoom *= 0.5);
 	else if (a->mod_i == -1 && a->main == 1 && k == PLUS)
 		a->i_max += 1;
 	if (k == O)
@@ -62,6 +62,7 @@ static void				fract_key_move(int k, t_a *a)
 
 int						fract_key(int k, t_a *a)
 {
+	ft_putnbr_end(k);
 	fract_key_menu(k, a);
 	fract_key_move(k, a);
 	if (k == SLASH)
@@ -80,8 +81,8 @@ int						fract_key(int k, t_a *a)
 		ft_error("ESC: Good Bye My Friend .. YOLO");
 	else if (k == M)
 		a->main *= -1;
-	else if (k == FOIS || k == I)
-		(k == FOIS) ? (a->mod_i *= -1) : (a->info_i *= -1);
+	else if (k == FOIS || k == I || k == ELEVEN)
+		(k == FOIS || k == ELEVEN) ? (a->mod_i *= -1) : (a->info_i *= -1);
 	else if (a->mod_i == -1 && a->main == 1 && k == MINUS && a->i_max >= 1)
 		(a->i_max == 0) ? (a->i_max = 0) : (a->i_max -= 1);
 	fractal_print(a);

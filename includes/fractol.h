@@ -35,6 +35,7 @@
 # define ENTER 36
 # define SPACE 49
 # define SLASH 24
+# define ELEVEN 27
 # define Q 12
 # define W 13
 # define E 14
@@ -49,6 +50,7 @@
 # define M_LEFT 1
 # define M_RIGHT 2
 # define FOIS 67
+# define ELEVEN 27
 
 typedef struct		s_a
 {
@@ -81,8 +83,8 @@ typedef struct		s_a
 	double			zoom;
 	double			ox;
 	double			oy;
-	long double			xx;
-	long double			yy;
+	double			xx;
+	double			yy;
 	double			zi;
 	double			zr;
 	double			cr;
