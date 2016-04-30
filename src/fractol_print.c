@@ -27,10 +27,11 @@ static void		ft_back_menu(t_a *a, int i)
 	y = -1;
 	while (++y < 31)
 	{
-		x = (MAX_X - 50);
+		x = (MAX_X - 65);
 		while (++x < MAX_X)
 			*(unsigned int*)(a->data + (x * (a->b)) + (y * a->l)) = 0x000000;
 	}
+	ft_back_menu2(a);
 }
 
 static void		ft_back_sub_menu(t_a *a)
@@ -51,7 +52,7 @@ static void		ft_print_info(t_a *a)
 {
 	ft_back_menu(a, 0);
 	a->str = ft_itoa(a->i_max);
-	mlx_string_put(a->mlx, a->win, (MAX_X - 40), 4, 0x74ECDC, a->str);
+	mlx_string_put(a->mlx, a->win, (MAX_X - 50), 4, 0x74ECDC, a->str);
 	free(a->str);
 	mlx_string_put(a->mlx, a->win, 10, 5, 0xFEA128, "Modifier I_MAX");
 	if (a->main != 1)
@@ -68,6 +69,12 @@ static void		ft_print_info(t_a *a)
 		mlx_string_put(a->mlx, a->win, 160, 5, 0xF33353, "Deactivate");
 	if (a->i_max == 0)
 		ft_print_the_end(a);
+	if (a->i == -1)
+	{
+		a->str = ft_itoa(a->zoom);
+		mlx_string_put(a->mlx, a->win, 930, 577, 0x74ECDC, a->str);
+		free(a->str);
+	}
 }
 
 static void		ft_print_verif_menu(t_a *a)

@@ -14,23 +14,23 @@
 
 int			julia(t_a *a, int i)
 {
-	double	fa_zr;
-	double	fa_zi;
+	double	zr;
+	double	zi;
 	double	tmp;
 
 	if (a->i_max == 0)
 		return (0);
 	a->zr = a->x / a->zoom + a->xx / a->zoom;
 	a->zi = a->y / a->zoom + a->yy / a->zoom;
-	fa_zr = a->zr * a->zr;
-	fa_zi = a->zi * a->zi;
-	while ((fa_zr + fa_zi) < 4 && ++i < a->i_max)
+	zr = a->zr * a->zr;
+	zi = a->zi * a->zi;
+	while ((zr + zi) < 4 && ++i < a->i_max)
 	{
 		tmp = a->zr;
-		a->zr = fa_zr - fa_zi + a->cr;
+		a->zr = zr - zi + a->cr;
 		a->zi = 2 * a->zi * tmp + a->ci;
-		fa_zr = a->zr * a->zr;
-		fa_zi = a->zi * a->zi;
+		zr = a->zr * a->zr;
+		zi = a->zi * a->zi;
 	}
 	return (i);
 }

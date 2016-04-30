@@ -44,6 +44,7 @@ void		fractol_init_var(t_a *a)
 
 void		ft_init_info(t_a *a)
 {
+	a->i = 1;
 	a->mod_i = 1;
 	a->main = 1;
 	a->main2 = 1;

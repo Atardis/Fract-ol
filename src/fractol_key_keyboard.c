@@ -43,6 +43,7 @@ static void				fract_key_menu(int k, t_a *a)
 
 static void				fract_key_move(int k, t_a *a)
 {
+	ft_putnbr_end(k);
 	if (a->main == 1 && (k == LEFT || k == RIGHT))
 		a->xx -= (k == LEFT) ? 30 : -30;
 	else if (a->main == 1 && (k == UP || k == DOWN))
@@ -54,18 +55,22 @@ static void				fract_key_move(int k, t_a *a)
 	else if (a->mod_i == -1 && a->main == 1 && k == PLUS)
 		a->i_max += 1;
 	if (k == O)
-	{
 		fractol_init_var(a);
-		fractal_print(a);
-	}
+}
+
+static void				frat_key_2(int k, t_a *a)
+{
+	fract_key_menu(k, a);
+	fract_key_move(k, a);
+	if (k == I)
+		a->i *= -1;
+	if (k == SLASH)
+		a->slash *= -1;
 }
 
 int						fract_key(int k, t_a *a)
 {
-	fract_key_menu(k, a);
-	fract_key_move(k, a);
-	if (k == SLASH)
-		a->slash *= -1;
+	frat_key_2(k, a);
 	if ((k == SPACE || k == TEN) && a->space == 1)
 		a->space += -2;
 	else if ((k == SPACE || k == TEN) && a->space == -1)
@@ -77,7 +82,10 @@ int						fract_key(int k, t_a *a)
 	else if (k == E || k == R)
 		a->k = (k == E) ? E : R;
 	else if (k == ESC)
-		ft_error("ESC: Good Bye My Friend .. YOLO");
+	{
+		ft_putstr("Sylvain Durif, Le Grand Monarque, ");
+		ft_error("le Christ Cosmique te dit au revoir ....Tchuss");
+	}
 	else if (k == M)
 		a->main *= -1;
 	else if (k == FOIS || k == I || k == ELEVEN)

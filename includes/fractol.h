@@ -18,8 +18,8 @@
 # include <fcntl.h>
 # include <math.h>
 
-# define MAX_X 1280
-# define MAX_Y 720
+# define MAX_X 1000
+# define MAX_Y 600
 # define TITLE "Fractol 42   by Gautier Hubault dit le Christ Cosmique"
 
 # define BLACK 0x000000
@@ -76,6 +76,7 @@ typedef struct		s_a
 	int				tmpz;
 	char			*str;
 	int				k;
+	int				i;
 	int				space;
 	int				save_x;
 	int				save_y;
@@ -151,6 +152,7 @@ void				fractal_print(t_a *a);
 void				ft_print_the_end(t_a *a);
 void				ft_print_sub_menu(t_a *a);
 void				ft_print_menu(t_a *a);
+void				ft_back_menu2(t_a *a);
 
 /*
 **		main.c

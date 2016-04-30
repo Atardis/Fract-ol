@@ -55,7 +55,7 @@ static unsigned int		ft_lennbr(int n)
 	return (count);
 }
 
-char					*ft_itoa(int n)
+char					*ft_itoa(double n)
 {
 	unsigned int	len;
 	char			*str;

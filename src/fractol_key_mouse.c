@@ -41,8 +41,6 @@ int					ft_key_mouse(int k, int x, int y, t_a *a)
 {
 	if (a->mod_i == -1 && a->main == 1 && k == M_PLUS && a->mod_i != -1)
 		a->i_max += 1;
-	else if (a->mod_i == -1 && a->main == 1 && k == M_MINUS && a->mod_i != -1)
-		a->i_max -= (a->i_max == 0) ? 0 : 1;
 	else if (a->mod_i == 1 && a->main == 1 && k == M_PLUS && a->mod_i != -1)
 		ft_resize(a, x, y, '*');
 	else if (a->mod_i == 1 && a->main == 1 && k == M_MINUS && a->mod_i != -1)
@@ -57,6 +55,8 @@ int					ft_key_mouse(int k, int x, int y, t_a *a)
 		a->i_max += (k == M_PLUS) ? 1 : -1;
 	else if (a->mod_i == -1 && k == M_MINUS)
 		a->i_max -= (a->i_max) ? 0 : 1;
+	if (a->i_max < 0)
+		a->i_max = 0;
 	fractal_print(a);
 	return (0);
 }
