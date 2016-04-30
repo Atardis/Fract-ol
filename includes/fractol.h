@@ -107,9 +107,9 @@ typedef struct		s_a
 **		fract_image.c
 */
 void				fract_new_image(t_a *a);
-void				fract_init(t_a *a);
 void				fractol_init_var(t_a *a);
 void				ft_init_info(t_a *a);
+void				fract_init(t_a *a);
 
 /*
 **		fractol_color.c
