@@ -43,7 +43,6 @@ static void				fract_key_menu(int k, t_a *a)
 
 static void				fract_key_move(int k, t_a *a)
 {
-	ft_putnbr_end(k);
 	if (a->main == 1 && (k == LEFT || k == RIGHT))
 		a->xx -= (k == LEFT) ? 30 : -30;
 	else if (a->main == 1 && (k == UP || k == DOWN))
