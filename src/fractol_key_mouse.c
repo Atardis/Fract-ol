@@ -39,6 +39,11 @@ void				ft_resize(t_a *a, int x, int y, char c)
 
 int					ft_key_mouse(int k, int x, int y, t_a *a)
 {
+	ft_putstr("X -> ");
+	ft_putnbr_end(x);
+	ft_putstr("Y -> ");
+	ft_putnbr_end(y);
+	ft_putchar('\n');
 	if (a->mod_i == -1 && a->main == 1 && k == M_PLUS && a->mod_i != -1)
 		a->i_max += 1;
 	else if (a->mod_i == 1 && a->main == 1 && k == M_PLUS && a->mod_i != -1)

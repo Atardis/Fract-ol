@@ -15,35 +15,33 @@
 static void		ft_print_the_end2(t_a *a)
 {
 	a->str = "      ,88~-_   Y88b      / 888~~  888~-_";
-	mlx_string_put(a->mlx, a->win, 800, 350, WHITE, a->str);
+	mlx_string_put(a->mlx, a->win, 280, 340, WHITE, a->str);
 	a->str = "   d888     \\   Y88b    /  888___ 888   \\";
-	mlx_string_put(a->mlx, a->win, 800, 365, WHITE, a->str);
+	mlx_string_put(a->mlx, a->win, 280, 355, WHITE, a->str);
 	a->str = "  88888      |   Y88b  /   888    888    |";
-	mlx_string_put(a->mlx, a->win, 800, 380, WHITE, a->str);
+	mlx_string_put(a->mlx, a->win, 280, 370, WHITE, a->str);
 	a->str = "  88888      |    Y888/    888    888   /";
-	mlx_string_put(a->mlx, a->win, 800, 395, WHITE, a->str);
+	mlx_string_put(a->mlx, a->win, 280, 385, WHITE, a->str);
 	a->str = "   Y888     /      Y8/     888    888_-~";
-	mlx_string_put(a->mlx, a->win, 800, 410, WHITE, a->str);
+	mlx_string_put(a->mlx, a->win, 280, 400, WHITE, a->str);
 	a->str = "     `88_ -~        Y      888___ 888 ~-_";
-	mlx_string_put(a->mlx, a->win, 800, 425, WHITE, a->str);
+	mlx_string_put(a->mlx, a->win, 280, 415, WHITE, a->str);
 }
 
 void			ft_print_the_end(t_a *a)
 {
 	a->str = " e88~~\\       e           e    e      888~~";
-	mlx_string_put(a->mlx, a->win, 250, 350, WHITE, a->str);
+	mlx_string_put(a->mlx, a->win, 280, 140, WHITE, a->str);
 	a->str = "d888         d8b         d8b  d8b     888___";
-	mlx_string_put(a->mlx, a->win, 250, 365, WHITE, a->str);
+	mlx_string_put(a->mlx, a->win, 280, 155, WHITE, a->str);
 	a->str = "8888 __     /Y88b       d888bdY88b    888";
-	mlx_string_put(a->mlx, a->win, 250, 380, WHITE, a->str);
+	mlx_string_put(a->mlx, a->win, 280, 170, WHITE, a->str);
 	a->str = "8888   |   /  Y88b     / Y88Y Y888b   888";
-	mlx_string_put(a->mlx, a->win, 250, 395, WHITE, a->str);
+	mlx_string_put(a->mlx, a->win, 280, 185, WHITE, a->str);
 	a->str = "Y888   |  /____Y88b   /   YY   Y888b  888";
-	mlx_string_put(a->mlx, a->win, 250, 410, WHITE, a->str);
+	mlx_string_put(a->mlx, a->win, 280, 200, WHITE, a->str);
 	a->str = " \"88__/  /      Y88b /          Y888b 888___";
-	mlx_string_put(a->mlx, a->win, 250, 425, WHITE, a->str);
-	a->str = "     `88_ -~        Y      888___ 888 ~-_";
-	mlx_string_put(a->mlx, a->win, 800, 425, WHITE, a->str);
+	mlx_string_put(a->mlx, a->win, 280, 215, WHITE, a->str);
 	ft_print_the_end2(a);
 }
 
