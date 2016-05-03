@@ -26,6 +26,8 @@ static void			ft_menu2(int keycode, t_a *a, int c)
 			a->ft = &mandelbar;
 		if (a->main2 == 4)
 			a->ft = &burning_ship;
+		if (a->main2 == 5)
+			a->ft = &celtic;
 		fractol_init_var(a);
 	}
 	else if (c == 3)
@@ -74,8 +76,8 @@ void				ft_menu(int keycode, t_a *a, int c)
 	if (c == 1)
 	{
 		if (a->main2 == 1 && keycode == UP)
-			a->main2 = 4;
-		else if (a->main2 == 4 && keycode == DOWN)
+			a->main2 = 5;
+		else if (a->main2 == 5 && keycode == DOWN)
 			a->main2 = 1;
 		else if (keycode == UP)
 			a->main2 -= 1;

@@ -12,78 +12,75 @@
 
 #include "../includes/fractol.h"
 
-static void		ft_back_menu(t_a *a, int i)
+static void		ft_back_menu(t_a *a)
 {
 	int			x;
 	int			y;
+	int			c;
 
 	y = -1;
-	while (++y < (40 + i))
+	while (++y < 198)
 	{
 		x = -1;
-		while (++x < 285)
-			*(unsigned int*)(a->data + (x * (a->b)) + (y * a->l)) = 0x000000;
-	}
-	y = -1;
-	while (++y < 31)
-	{
-		x = (MAX_X - 65);
 		while (++x < MAX_X)
-			*(unsigned int*)(a->data + (x * (a->b)) + (y * a->l)) = 0x000000;
+		{
+			if (y < 4 || (x >= 520 && x < 523))
+				c = 0xCC0000;
+			else
+				c = 0x002F2F;
+			*(unsigned int*)(a->data_2 + (x * (a->b)) + (y * a->l)) = c;
+		}
 	}
-	ft_back_menu2(a);
 }
 
-static void		ft_back_sub_menu(t_a *a)
+static int		ft_zoom(t_a *a)
 {
-	int			x;
-	int			y;
+	int			i;
+	double		tmp_z;
 
-	y = 40;
-	while (++y < 138)
+	i = 2;
+	tmp_z = a->zoom;
+	while(tmp_z > 100)
 	{
-		x = 270;
-		while (++x < 442)
-			*(unsigned int*)(a->data + (x * (a->b)) + (y * a->l)) = 0x000000;
+		i++;
+		tmp_z /= 10;
 	}
+	return (i);
+}
+
+static void		ft_print_info_2(t_a *a)
+{
+	if (a->i_max == 0)
+		ft_print_the_end(a);
+	a->str = "Nombre Zoom   : 2.10^";
+	mlx_string_put(a->mlx, a->win, 10, 680, 0xFEA128, a->str);
+	a->str = ft_itoa(ft_zoom(a));
+	mlx_string_put(a->mlx, a->win, 220, 680, 0x16901A, a->str);
+	free(a->str);
 }
 
 static void		ft_print_info(t_a *a)
 {
-	ft_back_menu(a, 0);
+	ft_print_info_2(a);
+	a->str = "Iteration Max :";
+	mlx_string_put(a->mlx, a->win, 10, 650, 0xFEA128, a->str);
 	a->str = ft_itoa(a->i_max);
-	mlx_string_put(a->mlx, a->win, (MAX_X - 50), 4, 0x74ECDC, a->str);
+	mlx_string_put(a->mlx, a->win, 165, 650, 0x16901A, a->str);
 	free(a->str);
-	mlx_string_put(a->mlx, a->win, 10, 5, 0xFEA128, "Modifier I_MAX");
-	if (a->main != 1)
+	mlx_string_put(a->mlx, a->win, 10, 620, 0xFEA128, "Modifier I_MAX: ");
+	if (a->mod_i != 1)
+		mlx_string_put(a->mlx, a->win, 165, 622, 0x16901A, "Activated");
+	else
+		mlx_string_put(a->mlx, a->win, 165, 622, 0xFE3A4E, "Desactivate");
+	if (a->main == -1)
 	{
-		a->str = "--------------------------";
-		mlx_string_put(a->mlx, a->win, 5, 25, 0x2C8CBC, a->str);
+
 		ft_print_menu(a);
 		if (a->main2 == 1 && a->main3 == -1)
 			ft_print_sub_menu(a);
 	}
-	if (a->mod_i != 1)
-		mlx_string_put(a->mlx, a->win, 160, 5, 0xB5E655, "Activated");
-	else
-		mlx_string_put(a->mlx, a->win, 160, 5, 0xF33353, "Deactivate");
-	if (a->i_max == 0)
-		ft_print_the_end(a);
-	if (a->i == -1)
-	{
-		a->str = ft_itoa(a->zoom);
-		mlx_string_put(a->mlx, a->win, 930, 577, 0x74ECDC, a->str);
-		free(a->str);
-	}
-}
-
-static void		ft_print_verif_menu(t_a *a)
-{
-	if (a->main != 1)
-		ft_back_menu(a, 115);
-	if (a->main == -1 && a->main2 == 1 && a->main3 == -1)
-		ft_back_sub_menu(a);
-	ft_back_menu(a, 0);
+	if (a->main == 1)
+		ft_print_info_menu(a);
 }
 
 void			fractal_print(t_a *a)
@@ -107,7 +104,8 @@ void			fractal_print(t_a *a)
 		}
 	}
 	a->zi = a->tmp_zi;
-	ft_print_verif_menu(a);
 	mlx_put_image_to_window(a->mlx, a->win, a->img, 0, 0);
+	ft_back_menu(a);
+	mlx_put_image_to_window(a->mlx, a->win, a->img_2, 0, MAX_Y);
 	ft_print_info(a);
 }

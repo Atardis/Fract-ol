@@ -52,6 +52,8 @@
 # define FOIS 67
 # define ELEVEN 27
 # define TEN 29
+# define NINE 25
+# define EIGHT 28
 
 typedef struct		s_a
 {
@@ -59,6 +61,12 @@ typedef struct		s_a
 	void			*win;
 	void			*img;
 	char			*data;
+
+	void			*img_2;
+	char			*data_2;
+	int				b_2;
+	int				l_2;
+
 	int				(*ft)(struct s_a*, int);
 	int				julia;
 	int				mandelbrot;
@@ -74,6 +82,10 @@ typedef struct		s_a
 	int				tmpx;
 	int				tmpy;
 	int				tmpz;
+	int				nine;
+	int				eight;
+	int				save_x_m;
+	int				save_y_m;
 	char			*str;
 	int				k;
 	int				i;
@@ -101,6 +113,7 @@ typedef struct		s_a
 	double			tmp_z;
 	double			tmp_xx;
 	double			tmp_yy;
+	int				nb_zoom;
 }					t_a;
 
 /*
@@ -115,6 +128,7 @@ void				fract_init(t_a *a);
 **		fractol_color.c
 */
 void				play_color(t_a *a, int k, int i);
+void				ft_print_info_menu(t_a *a);
 
 /*
 **		fractol_equation.c
@@ -123,6 +137,7 @@ int					julia(t_a *a, int i);
 int					mandelbrot(t_a *a, int i);
 int					mandelbar(t_a *a, int i);
 int					burning_ship(t_a *a, int i);
+int					celtic(t_a *a, int i);
 
 /*
 **		fractol_key_keyboard.c

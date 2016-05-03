@@ -47,58 +47,37 @@ void			ft_print_the_end(t_a *a)
 
 void			ft_print_sub_menu(t_a *a)
 {
-	if (a->main4 == 1)
-		a->str = "| ---->  Style 1";
-	else
-		a->str = "|       Style 1";
+	a->str = " *   Style 1";
 	a->color = (a->main4 == 1) ? 0xFEA128 : WHITE;
-	mlx_string_put(a->mlx, a->win, 276, 50, a->color, a->str);
-	if (a->main4 == 2)
-		a->str = "| --->   Style 2";
-	else
-		a->str = "|       Style 2";
+	mlx_string_put(a->mlx, a->win, 810, 620, a->color, a->str);
+	a->str = " *   Style 2";
 	a->color = (a->main4 == 2) ? 0xFEA128 : WHITE;
-	mlx_string_put(a->mlx, a->win, 276, 70, a->color, a->str);
-	if (a->main4 == 3)
-		a->str = "| --->   Style 3";
-	else
-		a->str = "|       Style 3";
+	mlx_string_put(a->mlx, a->win, 810, 650, a->color, a->str);
+	a->str = " *   Style 3";
 	a->color = (a->main4 == 3) ? 0xFEA128 : WHITE;
-	mlx_string_put(a->mlx, a->win, 276, 90, a->color, a->str);
-	if (a->main4 == 4)
-		a->str = "| --->   Style 4";
-	else
-		a->str = "|       Style 4";
+	mlx_string_put(a->mlx, a->win, 810, 680, a->color, a->str);
+	a->str = " *   Style 4";
 	a->color = (a->main4 == 4) ? 0xFEA128 : WHITE;
-	mlx_string_put(a->mlx, a->win, 276, 110, a->color, a->str);
+	mlx_string_put(a->mlx, a->win, 810, 710, a->color, a->str);
 }
 
 void			ft_print_menu(t_a *a)
 {
-	if (a->main2 == 1)
-		a->str = "----->   Fractal Julia";
-	else
-		a->str = "        Fractal Julia";
+	a->str = "* Fractal Julia";
 	a->color = (a->main2 == 1) ? 0xFEA128 : WHITE;
-	mlx_string_put(a->mlx, a->win, 5, 50, a->color, a->str);
-	if (a->main2 == 2)
-		a->str = "----->   Fractal Mandelbrot";
-	else
-		a->str = "        Fractal Mandelbrot";
+	mlx_string_put(a->mlx, a->win, 550, 620, a->color, a->str);
+	a->str = "* Fractal Mandelbrot";
 	a->color = (a->main2 == 2) ? 0xFEA128 : WHITE;
-	mlx_string_put(a->mlx, a->win, 5, 70, a->color, a->str);
-	if (a->main2 == 3)
-		a->str = "----->   Fractal Mandelbar";
-	else
-		a->str = "        Fractal Mandelbar";
+	mlx_string_put(a->mlx, a->win, 550, 650, a->color, a->str);
+	a->str = "* Fractal Mandelbar";
 	a->color = (a->main2 == 3) ? 0xFEA128 : WHITE;
-	mlx_string_put(a->mlx, a->win, 5, 90, a->color, a->str);
-	if (a->main2 == 4)
-		a->str = "----->   Fractal Fire";
-	else
-		a->str = "        Fractal BurningShip";
+	mlx_string_put(a->mlx, a->win, 550, 680, a->color, a->str);
+	a->str = "* Fractal Fire";
 	a->color = (a->main2 == 4) ? 0xFEA128 : WHITE;
-	mlx_string_put(a->mlx, a->win, 5, 110, a->color, a->str);
+	mlx_string_put(a->mlx, a->win, 550, 710, a->color, a->str);
+	a->str = "* Fractal Celtic";
+	a->color = (a->main2 == 5) ? 0xFEA128 : WHITE;
+	mlx_string_put(a->mlx, a->win, 550, 740, a->color, a->str);
 }
 
 void			ft_back_menu2(t_a *a)
@@ -119,5 +98,12 @@ void			ft_back_menu2(t_a *a)
 				*(unsigned int*)(a->data + z) = 0x000000;
 			}
 		}
+	}
+	y = -1;
+	while (++y < 200)
+	{
+		x = -1;
+		while (++x < MAX_X)
+			*(unsigned int*)(a->data_2 + (x * (a->b)) + (y * a->l)) = 0xCCCCCC;
 	}
 }

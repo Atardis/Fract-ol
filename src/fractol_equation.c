@@ -81,6 +81,27 @@ int			mandelbar(t_a *a, int i)
 	return (i);
 }
 
+int			celtic(t_a *a, int i)
+{
+	double	zr;
+	double	zi;
+	double	tmp;
+
+	a->cr = a->x / a->zoom + a->xx / a->zoom;
+	a->ci = a->y / a->zoom + a->yy / a->zoom;
+	zr = a->zr * a->zr * 2;
+	zi = a->zi * a->zi * 2;
+	while ((zr + zi) < 4 && ++i < a->i_max)
+	{
+		tmp = a->zr;
+		a->zr = fabs(zr - zi) + a->cr;
+		a->zi = 2 * a->zi * tmp + a->ci;
+		zr = a->zr * a->zr;
+		zi = a->zi * a->zi;
+	}
+	return (i);
+}
+
 int			burning_ship(t_a *a, int i)
 {
 	double	zr;

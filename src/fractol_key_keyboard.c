@@ -50,7 +50,10 @@ static void				fract_key_move(int k, t_a *a)
 	else if (a->mod_i == -1 && k == PLUS && a->i_max < 0)
 		a->i_max = 0;
 	else if (a->mod_i == 1 && a->main == 1 && (k == PLUS || k == MINUS))
-		(k == PLUS) ? (a->zoom *= 2) : (a->zoom *= 0.5);
+	{
+		a->zoom *= (k == PLUS) ? 2 : 0.5;
+		a->nb_zoom += (k == PLUS) ? 2 : -2;
+	}
 	else if (a->mod_i == -1 && a->main == 1 && k == PLUS)
 		a->i_max += 1;
 	if (k == O)
@@ -63,8 +66,12 @@ static void				frat_key_2(int k, t_a *a)
 	fract_key_move(k, a);
 	if (k == I)
 		a->i *= -1;
-	if (k == SLASH)
+	else if (k == SLASH)
 		a->slash *= -1;
+	else if (k == NINE)
+		a->nine *= -1;
+	else if (k == EIGHT)
+		a->eight *= -1;
 }
 
 int						fract_key(int k, t_a *a)
@@ -85,8 +92,6 @@ int						fract_key(int k, t_a *a)
 		ft_putstr("Sylvain Durif, Le Grand Monarque, ");
 		ft_error("le Christ Cosmique te dit au revoir ....Tchuss");
 	}
-	else if (k == M)
-		a->main *= -1;
 	else if (k == FOIS || k == I || k == ELEVEN)
 		(k == FOIS || k == ELEVEN) ? (a->mod_i *= -1) : (a->info_i *= -1);
 	else if (a->mod_i == -1 && a->main == 1 && k == MINUS && a->i_max >= 1)

@@ -22,7 +22,7 @@ void			ft_print_help(t_a *a)
 {
 	ft_putendl("fractol: illegal option -- -");
 	ft_putendl("usage: fractol:\n-j (julia)\n-m (mandelbrot)\n-M (mandelbar)");
-	ft_putendl("-b (burning ship)");
+	ft_putendl("-b (burning ship)\n-c (celtic)");
 	exit(1);
 }
 
@@ -47,6 +47,11 @@ static void		verif_argv(char *s, t_a *a)
 	{
 		a->ft = &burning_ship;
 		a->main2 = 4;
+	}
+	else if (!(ft_strcmp(s, "-c")))
+	{
+		a->ft = &celtic;
+		a->main2 = 5;
 	}
 	else
 		ft_print_help(a);

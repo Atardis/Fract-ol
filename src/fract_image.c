@@ -14,17 +14,20 @@
 
 void		fract_new_image(t_a *a)
 {
-	int		b;
-	int		c;
 	int		e;
 
 	mlx_clear_window(a->mlx, a->win);
 	if (!(a->img = mlx_new_image(a->mlx, MAX_X, MAX_Y)))
-		ft_error("Problem of Mlx New Image");
+		ft_error("Problem of Mlx New Image 1");
 	a->data = mlx_get_data_addr(a->img, &a->b, &a->l, &e);
 	if (a->data == NULL)
-		ft_error("Problem of Get_Data");
+		ft_error("Problem of Get_Data Image 1");
 	a->b /= 8;
+	if (!(a->img_2 = mlx_new_image(a->mlx, MAX_X, 200)))
+		ft_error("Problem of Mlx New Image 2");
+	a->data_2 = mlx_get_data_addr(a->img_2, &a->b_2, &a->l_2, &e);
+	if (a->data == NULL)
+		ft_error("Problem of Get_Data Image 2");
 }
 
 void		fractol_init_var(t_a *a)
@@ -40,6 +43,9 @@ void		fractol_init_var(t_a *a)
 	a->zi = 0;
 	a->cr = 0.285;
 	a->ci = 0.01;
+	a->nb_zoom = 0;
+	a->save_x_m = (MAX_X / 2);
+	a->save_y_m = (MAX_Y / 2);
 }
 
 void		ft_init_info(t_a *a)
@@ -53,6 +59,8 @@ void		ft_init_info(t_a *a)
 	a->info = -1;
 	a->space = 1;
 	a->slash = 1;
+	a->nine = 1;
+	a->eight = 1;
 	a->save_x = -(MAX_X / 2);
 	a->save_y = -(MAX_Y / 2);
 }
@@ -63,6 +71,6 @@ void		fract_init(t_a *a)
 	fractol_init_var(a);
 	if (!(a->mlx = mlx_init()))
 		ft_error("mlx_init error");
-	if (!(a->win = mlx_new_window(a->mlx, MAX_X, MAX_Y, TITLE)))
+	if (!(a->win = mlx_new_window(a->mlx, MAX_X, MAX_Y + 200, TITLE)))
 		ft_error("mlx_new_windows error");
 }
