@@ -74,6 +74,7 @@ SRC = \
 SRCO = $(SRC:.c=.o)
 
 all: $(NAME)
+	@printf ""
 
 $(NAME):
 	@gcc $(FLAGS) $(SRC)

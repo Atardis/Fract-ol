@@ -20,7 +20,8 @@ void			ft_error(char *str)
 
 void			ft_print_help(t_a *a)
 {
-	ft_putendl("fractol: illegal option -- -");
+	a->str = "fractol: illegal option -- -";
+	ft_putendl(a->str);
 	ft_putendl("usage: fractol:\n-j (julia)\n-m (mandelbrot)\n-M (mandelbar)");
 	ft_putendl("-b (burning ship)\n-c (celtic)");
 	exit(1);
@@ -29,30 +30,25 @@ void			ft_print_help(t_a *a)
 static void		verif_argv(char *s, t_a *a)
 {
 	if (!(ft_strcmp(s, "-j")))
-	{
-		a->ft = &julia;
 		a->main2 = 1;
-	}
 	else if (!(ft_strcmp(s, "-m")))
-	{
-		a->ft = &mandelbrot;
 		a->main2 = 2;
-	}
 	else if (!(ft_strcmp(s, "-M")))
-	{
-		a->ft = &mandelbar;
 		a->main2 = 3;
-	}
 	else if (!(ft_strcmp(s, "-b")))
-	{
-		a->ft = &burning_ship;
 		a->main2 = 4;
-	}
 	else if (!(ft_strcmp(s, "-c")))
-	{
-		a->ft = &celtic;
 		a->main2 = 5;
-	}
+	if (!(ft_strcmp(s, "-j")))
+		a->ft = &julia;
+	else if (!(ft_strcmp(s, "-m")))
+		a->ft = &mandelbrot;
+	else if (!(ft_strcmp(s, "-M")))
+		a->ft = &mandelbar;
+	else if (!(ft_strcmp(s, "-b")))
+		a->ft = &burning_ship;
+	else if (!(ft_strcmp(s, "-c")))
+		a->ft = &celtic;
 	else
 		ft_print_help(a);
 }

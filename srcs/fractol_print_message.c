@@ -72,7 +72,7 @@ void			ft_print_menu(t_a *a)
 	a->str = "* Fractal Mandelbar";
 	a->color = (a->main2 == 3) ? 0xFEA128 : WHITE;
 	mlx_string_put(a->mlx, a->win, 550, 680, a->color, a->str);
-	a->str = "* Fractal Fire";
+	a->str = "* Fractal Burning Ship";
 	a->color = (a->main2 == 4) ? 0xFEA128 : WHITE;
 	mlx_string_put(a->mlx, a->win, 550, 710, a->color, a->str);
 	a->str = "* Fractal Celtic";

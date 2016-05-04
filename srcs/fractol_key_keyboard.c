@@ -66,8 +66,8 @@ static void				frat_key_2(int k, t_a *a)
 	fract_key_move(k, a);
 	if (k == I)
 		a->i *= -1;
-	else if (k == SLASH)
-		a->slash *= -1;
+	else if (k == TWELVE)
+		a->twelve *= -1;
 	else if (k == NINE)
 		a->nine *= -1;
 	else if (k == EIGHT)
@@ -77,12 +77,12 @@ static void				frat_key_2(int k, t_a *a)
 int						fract_key(int k, t_a *a)
 {
 	frat_key_2(k, a);
-	if ((k == SPACE || k == TEN) && a->space == 1)
-		a->space += -2;
-	else if ((k == SPACE || k == TEN) && a->space == -1)
-		a->space += -1;
-	else if ((k == SPACE || k == TEN) && a->space == -2)
-		a->space = 1;
+	if (k == TEN && a->ten == 1)
+		a->ten += -2;
+	else if (k == TEN && a->ten == -1)
+		a->ten += -1;
+	else if (k == TEN && a->ten == -2)
+		a->ten = 1;
 	else if (k == Q || k == W)
 		a->k = (k == Q) ? Q : W;
 	else if (k == E || k == R)

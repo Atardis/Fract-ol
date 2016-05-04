@@ -12,6 +12,18 @@
 
 #include "../includes/fractol.h"
 
+static void			ft_menu4(int keycode, t_a *a)
+{
+	if (a->main4 == 1 && keycode == UP)
+		a->main4 = 4;
+	else if (a->main4 == 4 && keycode == DOWN)
+		a->main4 = 1;
+	else if (keycode == UP)
+		a->main4 -= 1;
+	else
+		a->main4 += 1;
+}
+
 static void			ft_menu2(int keycode, t_a *a, int c)
 {
 	if (c == 2)
@@ -31,19 +43,10 @@ static void			ft_menu2(int keycode, t_a *a, int c)
 		fractol_init_var(a);
 	}
 	else if (c == 3)
-	{
-		if (a->main4 == 1 && keycode == UP)
-			a->main4 = 4;
-		else if (a->main4 == 4 && keycode == DOWN)
-			a->main4 = 1;
-		else if (keycode == UP)
-			a->main4 -= 1;
-		else
-			a->main4 += 1;
-	}
+		ft_menu4(keycode, a);
 }
 
-static void			ft_menu3(int keycode, t_a *a)
+static void			ft_menu3(t_a *a)
 {
 	fractol_init_var(a);
 	if (a->main4 == 1)
@@ -88,7 +91,7 @@ void				ft_menu(int keycode, t_a *a, int c)
 	else if (c == 2 || c == 3)
 		ft_menu2(keycode, a, c);
 	else if (c == 4)
-		ft_menu3(keycode, a);
+		ft_menu3(a);
 	else if (c == 5)
 	{
 		a->main *= -1;

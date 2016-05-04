@@ -57,8 +57,8 @@ void		ft_init_info(t_a *a)
 	a->main3 = 1;
 	a->main4 = 1;
 	a->info = -1;
-	a->space = 1;
-	a->slash = 1;
+	a->ten = 1;
+	a->twelve = 1;
 	a->nine = 1;
 	a->eight = 1;
 	a->save_x = -(MAX_X / 2);

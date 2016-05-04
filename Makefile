@@ -1,57 +1,68 @@
-NAME=fractol
-FLAG=-lmlx -framework OpenGL -framework Appkit
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: gahubaul <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2016/05/03 07:39:12 by gahubaul          #+#    #+#              #
+#    Updated: 2016/05/03 07:40:36 by gahubaul         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-SRC =	src/main.c \
-		src/fract_image.c \
-		src/fractol_color.c \
-		src/fractol_key_keyboard.c \
-		src/fractol_key_mouse.c \
-		src/fractol_print.c \
-		src/fractol_equation.c \
-		src/fractol_print_message.c \
-		src/fractol_menu.c
+NAME = fractol
+CFLAGS = -Wall -Wextra -Werror
+FLAG = -lmlx -framework OpenGL -framework Appkit
+
+GREEN = \033[33;32m
+RED = \033[33;31m
+YELLOW = \033[33m
+
+LOC_SRC = srcs/
+
+SRCS = $(addprefix $(LOC_SRC), $(SRC))
+
+SRC =	main.c fract_image.c fractol_color.c fractol_key_keyboard.c \
+		fractol_key_mouse.c fractol_print.c fractol_equation.c \
+		fractol_print_message.c fractol_menu.c
 
 all: $(NAME)
-	@echo "\033[33;31m-----------------------------------------------"
-	@echo "\033[33;32m|\033[33;32m   Executable  \033[33;31mFractol   \033[33;32mprésent \t\033[33;32m | OK |"
-	@echo "\033[33;31m-----------------------------------------------"
+	@printf ""
 
-$(NAME): $(SRC)
+
+
+$(NAME): $(SRCS)
+	@printf "$(GREEN)|$(RED) Compilation de la libft\t\t"
 	@make -C libft
-	@echo "\033[33;32m|\033[31m Compilation de la libft\t\t\033[33;32m | OK |"
-	@gcc -o $(NAME) $(SRC) $(FLAG) libft/libft.a
-	@echo "\033[33;32m|\033[31m Compilation du programme fractol\t\033[33;32m | OK |"
-	@echo "\033[33;31m-----------------------------------------------"
-	@echo "\033[33;32m|\033[33;32m The \033[31mfractol \033[33;32mfile is create\t\t\033[33;32m | OK |"
+	@printf "$(GREEN) | OK |\n"
+	@printf "$(GREEN)|$(RED) Compilation du programme fractol\t"
+	@gcc -o $(NAME) $(SRCS) $(FLAG) $(CFLAGS) libft/libft.a
+	@printf "$(GREEN) | OK |\n"
+	@printf "\n"
+	@printf "$(GREEN)| The $(RED)fractol $(GREEN)file is create\t\t | OK |\n"
 
 clean:
-	@echo "\033[33;32m|\033[33m Destruction des fichiers .o libf\t\033[33;32m | OK |"
+	@printf "\$(GREEN)|$(YELLOW) Destruction des fichiers .o libf\t"
 	@make -C libft clean
+	@printf "$(GREEN) | OK |\n"
 
 fclean: clean
+	@printf "\$(GREEN)|$(YELLOW) Destruction du fichier  .a libft\t"
 	@make -C libft fclean
-	@echo "\033[33;32m|\033[33m Destruction du fichier  .a libft\t\033[33;32m | OK |"
+	@printf "$(GREEN) | OK |\n"
+	@printf "\$(GREEN)|$(YELLOW) Destruction de l'executable fractol\t"
 	@rm -f $(NAME)
-	@echo "\033[33;32m|\033[33m Destruction de l'executable fractol\t\033[33;32m | OK |"
+	@printf "$(GREEN) | OK |\n"
 
-name:
-	@echo "\033[33;31m------------------------------------------------------------------------------"
-	@echo "\033[33;32m    ######## ########     ###     ######  ########    #     #######  ##"
-	@echo "\033[33;32m    ##       ##     ##   ## ##   ##    ##    ##       #    ##     ## ##"
-	@echo "\033[33;32m    ##       ##     ##  ##   ##  ##          ##      #     ##     ## ##"
-	@echo "\033[33;32m    ######   ########  ##     ## ##          ##            ##     ## ##"
-	@echo "\033[33;32m    ##       ##   ##   ######### ##          ##            ##     ## ##"
-	@echo "\033[33;32m    ##       ##    ##  ##     ## ##    ##    ##            ##     ## ##"
-	@echo "\033[33;32m    ##       ##     ## ##     ##  ######     ##             #######  ########"
-	@echo "\033[33;31m------------------------------------------------------------------------------"
+back:
+	@printf "\n"
 
 help:
-	@echo "\033[33;32m- make        \033[33;31m(Compile)"
-	@echo "\033[33;32m- make fclean \033[33;31m(Destruction files .O and Program)"
-	@echo "\033[33;32m- make clean  \033[33;31m(Destruction files .O)"
-	@echo "\033[33;32m- make re     \033[33;31m(Recompile)"
-	@echo "\033[33;32m- make name   \033[33;31m(Print the Program's Name)"
+	@printf "$(GREEN)- make        	$(RED)(Compile)\n"
+	@printf "$(GREEN)- make fclean 	$(RED)(Destruction files .O and Program)\n"
+	@printf "$(GREEN)- make clean  	$(RED)(Destruction files .O)\n"
+	@printf "$(GREEN)- make re    	$(RED)(Recompile)\n"
 
-re: name fclean all
+re: fclean back all
 
-.PHONY: all fclean clean re name
+.PHONY: all fclean clean re

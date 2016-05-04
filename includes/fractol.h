@@ -34,8 +34,7 @@
 # define ESC 53
 # define ENTER 36
 # define SPACE 49
-# define SLASH 24
-# define ELEVEN 27
+# define TWELVE 24
 # define Q 12
 # define W 13
 # define E 14
@@ -78,7 +77,7 @@ typedef struct		s_a
 	int				main3;
 	int				main4;
 	int				color;
-	int				slash;
+	int				twelve;
 	int				tmpx;
 	int				tmpy;
 	int				tmpz;
@@ -89,7 +88,7 @@ typedef struct		s_a
 	char			*str;
 	int				k;
 	int				i;
-	int				space;
+	int				ten;
 	int				save_x;
 	int				save_y;
 	int				lock;
