@@ -66,7 +66,7 @@ static void		ft_print_info_2(t_a *a)
 	mlx_string_put(a->mlx, a->win, 165, 610, a->color, a->str);
 	a->str = "Nomber Zoom 10*";
 	mlx_string_put(a->mlx, a->win, 10, 690, 0xFEA128, a->str);
-	a->str = ft_itoa(ft_zoom(a) - 1);
+	a->str = ft_itoa(ft_zoom(a));
 	mlx_string_put(a->mlx, a->win, 163, 690, 0xFE3A4E, a->str);
 	free(a->str);
 	mlx_string_put(a->mlx, a->win, 235, 730, a->color, a->str);

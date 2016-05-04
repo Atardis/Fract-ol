@@ -29,8 +29,6 @@ SRC =	main.c fract_image.c fractol_color.c fractol_key_keyboard.c \
 all: $(NAME)
 	@printf ""
 
-
-
 $(NAME): $(SRCS)
 	@printf "$(GREEN)|$(RED) Compilation de la libft\t\t"
 	@make -C libft
