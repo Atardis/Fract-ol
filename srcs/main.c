@@ -59,14 +59,11 @@ int				main(int argc, char **argv)
 
 	if (argc == 1 || argc >= 4)
 		ft_print_help(&a);
-	a.i_max = -1;
 	if (argc == 3)
-	{
 		if (ft_atoi(argv[2]) >= 0)
 			a.i_max = ft_atoi(argv[2]);
-		if (a.i_max < 0)
-			a.i_max *= -1;
-	}
+	if (argc == 2)
+		a.i_max = 75;
 	verif_argv(argv[1], &a);
 	fract_init(&a);
 	fract_new_image(&a);

@@ -24,7 +24,7 @@ SRCS = $(addprefix $(LOC_SRC), $(SRC))
 
 SRC =	main.c fract_image.c fractol_color.c fractol_key_keyboard.c \
 		fractol_key_mouse.c fractol_print.c fractol_equation.c \
-		fractol_print_message.c fractol_menu.c
+		fractol_print_message.c fractol_menu.c fractol_print_main.c
 
 all: $(NAME)
 	@printf ""
@@ -40,12 +40,12 @@ $(NAME): $(SRCS)
 	@printf "$(GREEN)| The $(RED)fractol $(GREEN)file is create\t\t | OK |\n"
 
 clean:
-	@printf "\$(GREEN)|$(YELLOW) Destruction des fichiers .o libf\t"
+	@printf "\$(GREEN)|$(YELLOW) Destruction des fichiers .o libft\t"
 	@make -C libft clean
 	@printf "$(GREEN) | OK |\n"
 
 fclean: clean
-	@printf "\$(GREEN)|$(YELLOW) Destruction du fichier  .a libft\t"
+	@printf "\$(GREEN)|$(YELLOW) Destruction du fichier   .a libft\t"
 	@make -C libft fclean
 	@printf "$(GREEN) | OK |\n"
 	@printf "\$(GREEN)|$(YELLOW) Destruction de l'executable fractol\t"

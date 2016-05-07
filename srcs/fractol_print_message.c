@@ -80,30 +80,24 @@ void			ft_print_menu(t_a *a)
 	mlx_string_put(a->mlx, a->win, 550, 740, a->color, a->str);
 }
 
-void			ft_back_menu2(t_a *a)
+void			ft_print_info_menu(t_a *a)
 {
-	int			y;
-	int			x;
-	int			z;
-
-	if (a->i == -1)
-	{
-		y = (MAX_Y - 25);
-		while (++y < MAX_Y)
-		{
-			x = (MAX_X - 65);
-			while (++x < MAX_X)
-			{
-				z = (x * (a->b)) + (y * a->l);
-				*(unsigned int*)(a->data + z) = 0x000000;
-			}
-		}
-	}
-	y = -1;
-	while (++y < 200)
-	{
-		x = -1;
-		while (++x < MAX_X)
-			*(unsigned int*)(a->data_2 + (x * (a->b)) + (y * a->l)) = 0xCCCCCC;
-	}
+	a->str = "Info (Clique ici pour ouvrir le menu)";
+	mlx_string_put(a->mlx, a->win, 480, 605, 0xC03000, a->str);
+	a->str = "Touche O                    - Origin";
+	mlx_string_put(a->mlx, a->win, 480, 630, 0xFEA128, a->str);
+	a->str = "Clique <- / ->              - Zoom/Dezoom";
+	mlx_string_put(a->mlx, a->win, 480, 650, 0xFEA128, a->str);
+	a->str = "Molette Haut/Bas            - Zoom/Dezoom";
+	mlx_string_put(a->mlx, a->win, 480, 670, 0xFEA128, a->str);
+	a->str = "08(s) ou 8/*                - Deplacement Vertical";
+	mlx_string_put(a->mlx, a->win, 480, 690, 0xFEA128, a->str);
+	a->str = "09(s) ou 9/(                - Deplacement Horizontal";
+	mlx_string_put(a->mlx, a->win, 480, 710, 0xFEA128, a->str);
+	a->str = "10(s) ou 0/) (2 click)      - Change Julia";
+	mlx_string_put(a->mlx, a->win, 480, 730, 0xFEA128, a->str);
+	a->str = "11(s) ou -/_ et Molette +/- - Changer Iteration";
+	mlx_string_put(a->mlx, a->win, 480, 750, 0xFEA128, a->str);
+	a->str = "12(s) ou =/+                - Centre Fractal";
+	mlx_string_put(a->mlx, a->win, 480, 770, 0xFEA128, a->str);
 }

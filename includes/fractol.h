@@ -127,7 +127,6 @@ void				fract_init(t_a *a);
 **		fractol_color.c
 */
 void				play_color(t_a *a, int k, int i);
-void				ft_print_info_menu(t_a *a);
 
 /*
 **		fractol_equation.c
@@ -146,14 +145,15 @@ int					fract_key(int k, t_a *a);
 /*
 **		fractol_key_mouse.c
 */
+void				ft_resize(t_a *a, int x, int y, char c);
 int					ft_key_mouse(int k, int x, int y, t_a *a);
 int					mouse_position(int x, int y, t_a *a);
-void				ft_resize(t_a *a, int x, int y, char c);
 
 /*
 **		fractol_menu.c
 */
 void				ft_menu(int keycode, t_a *a, int c);
+int					ft_zoom(t_a *a);
 
 /*
 **		fractol_print.c
@@ -161,12 +161,18 @@ void				ft_menu(int keycode, t_a *a, int c);
 void				fractal_print(t_a *a);
 
 /*
+**		fractol_print_main.c
+*/
+void				ft_print_info(t_a *a);
+void				ft_print_color_info(t_a *a);
+
+/*
 **		fractol_print_message.c
 */
 void				ft_print_the_end(t_a *a);
 void				ft_print_sub_menu(t_a *a);
 void				ft_print_menu(t_a *a);
-void				ft_back_menu2(t_a *a);
+void				ft_print_info_menu(t_a *a);
 
 /*
 **		main.c

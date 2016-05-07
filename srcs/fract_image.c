@@ -33,8 +33,6 @@ void		fract_new_image(t_a *a)
 void		fractol_init_var(t_a *a)
 {
 	a->lock = 1;
-	if (a->i_max <= 0)
-		a->i_max = 75;
 	a->zoom = 100;
 	a->ox = -(MAX_X / 2);
 	a->oy = -(MAX_Y / 2);
@@ -63,6 +61,7 @@ void		ft_init_info(t_a *a)
 	a->eight = 1;
 	a->save_x = -(MAX_X / 2);
 	a->save_y = -(MAX_Y / 2);
+	a->k = 0;
 }
 
 void		fract_init(t_a *a)

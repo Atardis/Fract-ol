@@ -99,3 +99,18 @@ void				ft_menu(int keycode, t_a *a, int c)
 		ft_menu(keycode, a, 4);
 	}
 }
+
+int					ft_zoom(t_a *a)
+{
+	int				i;
+	double			tmp_z;
+
+	i = 2;
+	tmp_z = a->zoom;
+	while (tmp_z > 100)
+	{
+		i++;
+		tmp_z /= 10;
+	}
+	return (i);
+}

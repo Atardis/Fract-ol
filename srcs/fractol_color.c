@@ -45,25 +45,3 @@ void			play_color(t_a *a, int k, int i)
 		a->data[++k] = ((color_front / a->i_max) * i) >> 2;
 	}
 }
-
-void			ft_print_info_menu(t_a *a)
-{
-	a->str = "Info (Clique ici pour ouvrir le menu)";
-	mlx_string_put(a->mlx, a->win, 535, 605, 0xC03000, a->str);
-	a->str = "Touche O               - Origin";
-	mlx_string_put(a->mlx, a->win, 535, 630, 0xFEA128, a->str);
-	a->str = "Clique <- / ->         - Zoom/Dezoom";
-	mlx_string_put(a->mlx, a->win, 535, 650, 0xFEA128, a->str);
-	a->str = "Molette Haut/Bas       - Zoom/Dezoom";
-	mlx_string_put(a->mlx, a->win, 535, 670, 0xFEA128, a->str);
-	a->str = "08 ou 8/*              - Deplacement Vertical";
-	mlx_string_put(a->mlx, a->win, 535, 690, 0xFEA128, a->str);
-	a->str = "09 ou 9/(              - Deplacement Horiz";
-	mlx_string_put(a->mlx, a->win, 535, 710, 0xFEA128, a->str);
-	a->str = "10 ou 0/)              - Change Julia";
-	mlx_string_put(a->mlx, a->win, 535, 730, 0xFEA128, a->str);
-	a->str = "11 ou -/_ et Molette   - Changer Iteration";
-	mlx_string_put(a->mlx, a->win, 535, 750, 0xFEA128, a->str);
-	a->str = "12 ou =/+              - Centre Fractal";
-	mlx_string_put(a->mlx, a->win, 535, 770, 0xFEA128, a->str);
-}
