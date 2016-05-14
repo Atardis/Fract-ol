@@ -53,6 +53,14 @@ static void		verif_argv(char *s, t_a *a)
 		ft_print_help(a);
 }
 
+static int		windows_exit(t_a *a)
+{
+	(void)a;
+	ft_putstr("Sylvain Durif, Le Grand Monarque, ");
+	ft_error("le Christ Cosmique te dit au revoir ....Tchuss");
+	return (0);
+}
+
 int				main(int argc, char **argv)
 {
 	t_a			a;
@@ -70,6 +78,7 @@ int				main(int argc, char **argv)
 	fractal_print(&a);
 	mlx_hook(a.win, 2, 1L << 1, fract_key, &a);
 	mlx_hook(a.win, 6, 1L << 6, mouse_position, &a);
+	mlx_hook(a.win, 17, 1L << 17, windows_exit, &a);
 	mlx_mouse_hook(a.win, ft_key_mouse, &a);
 	mlx_loop(a.mlx);
 	return (0);
