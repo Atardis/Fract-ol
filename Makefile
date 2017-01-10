@@ -10,9 +10,10 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = fractol
-CFLAGS = -Wall -Wextra -Werror
-FLAG = -lmlx -framework OpenGL -framework Appkit
+NAME	=	fractol
+CFLAGS	=	-Wall -Wextra -Werror
+FLAG	=	-L/usr/local/lib/ -I/usr/local/include -lmlx -framework	\
+			OpenGL -framework AppKit
 
 GREEN = \033[33;32m
 RED = \033[33;31m
@@ -32,6 +33,7 @@ all: $(NAME)
 $(NAME): $(SRCS)
 	@printf "$(GREEN)|$(RED) Compilation de la libft\t\t"
 	@make -C libft
+	@make -C minilibx_macos
 	@printf "$(GREEN) | OK |\n"
 	@printf "$(GREEN)|$(RED) Compilation du programme fractol\t"
 	@gcc -o $(NAME) $(SRCS) $(FLAG) $(CFLAGS) libft/libft.a
